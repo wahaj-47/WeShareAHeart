@@ -26,10 +26,14 @@ public class PlayerController : MonoBehaviour
         if (playerId == 1)
         {
             gameObject.tag = "Human";
+            rb.gravityScale = 9.8f;
+            gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
         }
         else
         {
             gameObject.tag = "Ghost";
+            rb.gravityScale = 0.0f;
+            gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
         }
     }
 
