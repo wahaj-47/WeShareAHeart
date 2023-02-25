@@ -191,6 +191,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &85376446
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 85376447}
+  m_Layer: 0
+  m_Name: ThrowPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &85376447
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85376446}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.32, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 962892069}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &305261584
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -345,11 +376,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6648930984035363042, guid: a128d4eed15252947bdfb4ecb541ce57, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.06
+      value: 3.53
       objectReference: {fileID: 0}
     - target: {fileID: 6648930984035363042, guid: a128d4eed15252947bdfb4ecb541ce57, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.6956521
+      value: -1.25
       objectReference: {fileID: 0}
     - target: {fileID: 6648930984035363042, guid: a128d4eed15252947bdfb4ecb541ce57, type: 3}
       propertyPath: m_LocalPosition.z
@@ -440,6 +471,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7633209, y: 1.0150343}
   m_EdgeRadius: 0
+--- !u!4 &962892069 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6648930984035363042, guid: a128d4eed15252947bdfb4ecb541ce57, type: 3}
+  m_PrefabInstance: {fileID: 6648930984158870012}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1513569511 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6648930984035363047, guid: a128d4eed15252947bdfb4ecb541ce57, type: 3}
@@ -588,11 +624,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6648930984035363042, guid: a128d4eed15252947bdfb4ecb541ce57, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.41304344
+      value: -6.51
       objectReference: {fileID: 0}
     - target: {fileID: 6648930984035363042, guid: a128d4eed15252947bdfb4ecb541ce57, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.6956521
+      value: -1.07
       objectReference: {fileID: 0}
     - target: {fileID: 6648930984035363042, guid: a128d4eed15252947bdfb4ecb541ce57, type: 3}
       propertyPath: m_LocalPosition.z
@@ -626,6 +662,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6648930984035363043, guid: a128d4eed15252947bdfb4ecb541ce57, type: 3}
+      propertyPath: ThrowPoint
+      value: 
+      objectReference: {fileID: 85376447}
     - target: {fileID: 6648930984035363047, guid: a128d4eed15252947bdfb4ecb541ce57, type: 3}
       propertyPath: m_Name
       value: Player-One

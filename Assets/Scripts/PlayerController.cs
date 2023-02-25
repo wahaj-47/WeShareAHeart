@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public int playerId = 1;
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
+    public Transform ThrowPoint;
     Vector2 movement;
 
     bool isAiming = false;
@@ -48,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
     void Throw()
     {
-        GameObject heart = Instantiate(prefab, new Vector2(rb.position.x, rb.position.y + 2), Quaternion.identity);
+        GameObject heart = Instantiate(prefab, ThrowPoint.position, Quaternion.identity);
         Rigidbody2D heartRb = heart.AddComponent<Rigidbody2D>();
         heartRb.AddForce(transform.right * thrust, ForceMode2D.Impulse);
     }
