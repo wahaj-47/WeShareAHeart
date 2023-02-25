@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         movement.x = Input.GetAxisRaw("Player" + playerId + "Horizontal");
         
         if(playerState == "ghost")
@@ -71,15 +72,17 @@ public class PlayerController : MonoBehaviour
         isAiming = false;
         arrow.gameObject.SetActive(false);
 
-        SwitchState("ghost");
+        playerState = "ghost";
+        
         GameObject heart = Instantiate(heartPrefab, ThrowPoint.position, Quaternion.identity);
         Rigidbody2D heartRb = heart.AddComponent<Rigidbody2D>();
         heartRb.AddForce(arrow.right * thrust, ForceMode2D.Impulse);
     }
 
-    void SwitchState(string state)
+    public void SwitchState(string state)
     {
         playerState = state;
+
         if(state == "human")
         {
             //Enable collision
