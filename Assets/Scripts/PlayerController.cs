@@ -10,7 +10,13 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     Vector2 movement;
 
+    bool isAiming = false;
+    bool directionSet = false;
+
     private string playerState;
+
+    public GameObject prefab;
+    public float thrust = 20;
 
     void Start()    
     {
@@ -24,7 +30,15 @@ public class PlayerController : MonoBehaviour
         movement.x = Input.GetAxisRaw("Player" + playerId + "Horizontal");
         
         if(playerState == "ghost")
+        {
             movement.y = Input.GetAxisRaw("Player" + playerId + "Vertical");
+        }
+
+        if(Input.GetButtonDown("Fire" + playerId) && playerState == "human")
+        {
+            Throw();
+        }
+
     }
 
     void FixedUpdate()
@@ -32,9 +46,10 @@ public class PlayerController : MonoBehaviour
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 
-    // called when the cube hits the floor
-    void OnCollisionEnter2D(Collision2D col)
+    void Throw()
     {
-        LevelLoader.instance.LoadNextLevel();
+        GameObject heart = Instantiate(prefab, new Vector2(rb.position.x, rb.position.y + 2), Quaternion.identity);
+        Rigidbody2D heartRb = heart.AddComponent<Rigidbody2D>();
+        heartRb.AddForce(transform.right * thrust, ForceMode2D.Impulse);
     }
 }
