@@ -14,7 +14,8 @@ public class PlayerController : MonoBehaviour
 
     void Start()    
     {
-        playerId == 1 ? playerState = "human" : " ghost";
+        if (playerId == 1) playerState = "human";
+        else playerState = "ghost";
     }
 
     // Update is called once per frame
@@ -22,7 +23,7 @@ public class PlayerController : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw("Player" + playerId + "Horizontal");
         
-        if(playerState = ghost)
+        if(playerState == "ghost")
             movement.y = Input.GetAxisRaw("Player" + playerId + "Vertical");
     }
 
