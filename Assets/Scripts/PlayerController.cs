@@ -12,12 +12,17 @@ public class PlayerController : MonoBehaviour
     Vector2 movement;
 
     bool isAiming = false;
-    bool directionSet = false;
+    Vector2 direction;
 
     private string playerState;
 
-    public GameObject prefab;
+    public GameObject heartPrefab;
     public float thrust = 20;
+
+    public Transform arrow;
+    public float rotationSpeed = 0.5f;
+    public float RotAngleZ = 60;
+
 
     void Start()    
     {
@@ -35,11 +40,19 @@ public class PlayerController : MonoBehaviour
             movement.y = Input.GetAxisRaw("Player" + playerId + "Vertical");
         }
 
-        if(Input.GetButtonDown("Fire" + playerId) && playerState == "human")
+        if (Input.GetButtonDown("Fire" + playerId) && playerState == "human" && !isAiming)
+        {
+            Aim();
+        } else if (Input.GetButtonDown("Fire" + playerId) && playerState == "human" && isAiming)
         {
             Throw();
         }
 
+        if (isAiming)
+        {
+            float rZ = Mathf.SmoothStep(-RotAngleZ, RotAngleZ, Mathf.PingPong(Time.time * rotationSpeed, 1));
+            arrow.rotation = Quaternion.Euler(0, 0, rZ);
+        }
     }
 
     void FixedUpdate()
@@ -47,10 +60,33 @@ public class PlayerController : MonoBehaviour
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 
+    void Aim()
+    {
+        isAiming = true;
+        arrow.gameObject.SetActive(true);
+    }
+
     void Throw()
     {
-        GameObject heart = Instantiate(prefab, ThrowPoint.position, Quaternion.identity);
+        isAiming = false;
+        arrow.gameObject.SetActive(false);
+
+        SwitchState("ghost");
+        GameObject heart = Instantiate(heartPrefab, ThrowPoint.position, Quaternion.identity);
         Rigidbody2D heartRb = heart.AddComponent<Rigidbody2D>();
-        heartRb.AddForce(transform.right * thrust, ForceMode2D.Impulse);
+        heartRb.AddForce(arrow.right * thrust, ForceMode2D.Impulse);
+    }
+
+    void SwitchState(string state)
+    {
+        playerState = state;
+        if(state == "human")
+        {
+            //Enable collision
+        }
+        else
+        {
+            //Disable collision
+        }
     }
 }
