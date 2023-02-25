@@ -6,9 +6,20 @@ public class Possess : MonoBehaviour
 {
     void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Floor")
         {
-            other.gameObject.GetComponent<PlayerController>().SwitchState("human");
+            Destroy(gameObject);
+
+            //Game over
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Ghost")
+        {
+           other.gameObject.GetComponent<PlayerController>().RunCoroutine("Human", 0.1f);
+           Destroy(gameObject);
         }
     }
 }

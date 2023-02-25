@@ -14,8 +14,6 @@ public class PlayerController : MonoBehaviour
     bool isAiming = false;
     Vector2 direction;
 
-    private string playerState;
-
     public GameObject heartPrefab;
     public float thrust = 20;
 
@@ -23,11 +21,16 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed = 0.5f;
     public float RotAngleZ = 60;
 
-
     void Start()    
     {
-        if (playerId == 1) playerState = "human";
-        else playerState = "ghost";
+        if (playerId == 1)
+        {
+            gameObject.tag = "Human";
+        }
+        else
+        {
+            gameObject.tag = "Ghost";
+        }
     }
 
     // Update is called once per frame
@@ -36,15 +39,15 @@ public class PlayerController : MonoBehaviour
 
         movement.x = Input.GetAxisRaw("Player" + playerId + "Horizontal");
         
-        if(playerState == "ghost")
+        if(gameObject.tag == "Ghost")
         {
             movement.y = Input.GetAxisRaw("Player" + playerId + "Vertical");
         }
 
-        if (Input.GetButtonDown("Fire" + playerId) && playerState == "human" && !isAiming)
+        if (Input.GetButtonDown("Fire" + playerId) && gameObject.tag == "Human" && !isAiming)
         {
             Aim();
-        } else if (Input.GetButtonDown("Fire" + playerId) && playerState == "human" && isAiming)
+        } else if (Input.GetButtonDown("Fire" + playerId) && gameObject.tag == "Human" && isAiming)
         {
             Throw();
         }
@@ -72,24 +75,35 @@ public class PlayerController : MonoBehaviour
         isAiming = false;
         arrow.gameObject.SetActive(false);
 
-        playerState = "ghost";
+        StartCoroutine(SwitchState("Ghost", 0.1f));
+        gameObject.GetComponent<BoxCollider2D>().isTrigger = true ;
         
         GameObject heart = Instantiate(heartPrefab, ThrowPoint.position, Quaternion.identity);
         Rigidbody2D heartRb = heart.AddComponent<Rigidbody2D>();
         heartRb.AddForce(arrow.right * thrust, ForceMode2D.Impulse);
     }
 
-    public void SwitchState(string state)
+    public IEnumerator SwitchState(string tag, float delay = 0)
     {
-        playerState = state;
+        yield return new WaitForSeconds(delay);
 
-        if(state == "human")
+        Debug.Log(tag + delay);
+        gameObject.tag = tag;
+
+        if (tag == "Human")
         {
-            //Enable collision
+            rb.gravityScale = 9.8f;
+            gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
         }
         else
         {
-            //Disable collision
+            rb.gravityScale = 0.0f;
+            gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
         }
+    }
+
+    public void RunCoroutine(string tag, float delay)
+    {
+        StartCoroutine(SwitchState(tag, delay));
     }
 }
