@@ -31,4 +31,10 @@ public class PlayerController : MonoBehaviour
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
+
+    // called when the cube hits the floor
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        LevelLoader.instance.LoadNextLevel();
+    }
 }

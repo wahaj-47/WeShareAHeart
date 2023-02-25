@@ -30,8 +30,6 @@ public class StateManager : MonoBehaviour
     {
         if (health > 0 && distance > threshold)
             health = health - (damage * (distance / threshold) * Time.fixedDeltaTime);
-
-        Debug.Log(health);
     }
 
     public void Lose(){

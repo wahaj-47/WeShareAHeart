@@ -5,7 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
+    public static LevelLoader instance;
     public Animator animator;
+
+    private void Awake()
+    {
+        if (LevelLoader.instance == null) instance = this;
+        else Destroy(gameObject);
+    }
 
     public void LoadNextLevel(string transition = "Start")
     {
