@@ -26,6 +26,10 @@ public class PlayerController : MonoBehaviour
     private float timeRemaining = 10;
     public bool timerIsRunning = false;
 
+    public static bool hardMode = true;
+    
+
+
     public Text timer;
 
     private bool isMoving = false;
@@ -37,6 +41,11 @@ public class PlayerController : MonoBehaviour
 
     public RuntimeAnimatorController playerTwoHumanAnimationController;
     public RuntimeAnimatorController playerTwoGhostAnimationController;
+
+    public static void SetHardMode(bool mode)
+    {
+        hardMode = mode;
+    }
 
     void Start()    
     {
@@ -73,7 +82,7 @@ public class PlayerController : MonoBehaviour
                 AudioManager.instance.PlayOnce("Flame");
         }
 
-        if (timerIsRunning)
+        if (timerIsRunning && hardMode)
         {
             if (timeRemaining > 0)
             {
