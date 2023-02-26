@@ -15,6 +15,7 @@ public class Solidify : MonoBehaviour
     void ToggleIsTrigger()
     {
         circle.isTrigger = false;
+        gameObject.layer = LayerMask.NameToLayer("Default");
     }
 
 }

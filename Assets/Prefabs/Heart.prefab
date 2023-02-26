@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7402218058361444683}
   - component: {fileID: 7074892084920624671}
   - component: {fileID: 181446512517791791}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Heart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 4cc45bda996e06648bbb5464f5124f86, type: 2}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.011081576, y: 0}

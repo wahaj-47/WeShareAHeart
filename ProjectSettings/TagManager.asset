@@ -20,7 +20,7 @@ TagManager:
   - GhostObstacle
   - Human
   - Ghost
-  - 
+  - IgnorePlayerCollision
   - 
   - 
   - 

@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed = 0.2f;
     public float RotAngleZ = 90;
 
-    public float dDayTimer = 10.0f;
+    public float dDayTimer = 20.0f;
     private float timeRemaining = 20;
     public bool timerIsRunning = false;
     private float timeToPickHeart;
