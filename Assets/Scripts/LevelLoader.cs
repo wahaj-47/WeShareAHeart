@@ -19,6 +19,11 @@ public class LevelLoader : MonoBehaviour
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1, transition));
     }
 
+    public void LoadLevelByIndex(int buildIndex, string transition = "Start")
+    {
+        StartCoroutine(LoadLevel(buildIndex, transition));
+    }
+
     public void Reload(string transition = "Start")
     {
         //AudioManager.instance.Play("Theme");

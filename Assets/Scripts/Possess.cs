@@ -4,22 +4,23 @@ using UnityEngine;
 
 public class Possess : MonoBehaviour
 {
-    void OnCollisionEnter2D(Collision2D other)
+    void Start()
     {
-        if(other.gameObject.tag == "Floor")
-        {
-            Destroy(gameObject);
-
-            //Game over
-        }
+        Invoke("Die", 10.0f);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Ghost")
         {
-           other.gameObject.GetComponent<PlayerController>().RunCoroutine("Human", 0.1f);
-           Destroy(gameObject);
+            CancelInvoke("Die");
+            other.gameObject.GetComponent<PlayerController>().RunCoroutine("Human", 0.1f);
+            Destroy(gameObject);
         }
+    }
+
+    void Die()
+    {
+        LevelLoader.instance.LoadLevelByIndex(3);
     }
 }

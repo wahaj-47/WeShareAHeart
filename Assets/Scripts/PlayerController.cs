@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor.Animations;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class PlayerController : MonoBehaviour
 
     public Transform arrow;
     public float rotationSpeed = 0.5f;
-    public float RotAngleZ = 60;
+    public float RotAngleZ = 75;
 
     public float dDayTimer = 10.0f;
     private float timeRemaining = 10;
@@ -30,6 +31,14 @@ public class PlayerController : MonoBehaviour
 
     private bool isMoving = false;
 
+    public Animator animator;
+
+    public AnimatorController playerOneHumanAnimationController;
+    public AnimatorController playerOneGhostAnimationController;
+
+    public AnimatorController playerTwoHumanAnimationController;
+    public AnimatorController playerTwoGhostAnimationController;
+
     void Start()    
     {
         timerIsRunning = true;
@@ -37,20 +46,26 @@ public class PlayerController : MonoBehaviour
         {
             gameObject.tag = "Human";
             rb.gravityScale = 9.8f;
-            gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+            //gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
             Invoke("Throw", dDayTimer);
+            animator.runtimeAnimatorController = playerOneHumanAnimationController;
+            gameObject.layer = LayerMask.NameToLayer("Human");
         }
         else
         {
             gameObject.tag = "Ghost";
-            rb.gravityScale = 0.0f;
-            gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+            rb.gravityScale = 0f;
+            //gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+            animator.runtimeAnimatorController = playerTwoGhostAnimationController;
+            gameObject.layer = LayerMask.NameToLayer("Ghost");
         }
     }
 
     // Update is called once per frame
     void Update()
     {
+        animator.SetBool("isMoving", isMoving);
+        
         if (isMoving)
         {
             if (gameObject.tag == "Human")
@@ -130,6 +145,15 @@ public class PlayerController : MonoBehaviour
 
     void Throw()
     {
+        if(playerId == 1)
+        {
+            animator.runtimeAnimatorController = playerOneGhostAnimationController;
+        }
+        else
+        {
+            animator.runtimeAnimatorController = playerTwoGhostAnimationController;
+        }
+
         AudioManager.instance.Play("Woosh");
         CancelInvoke("Throw");
 
@@ -137,11 +161,12 @@ public class PlayerController : MonoBehaviour
         arrow.gameObject.SetActive(false);
 
         StartCoroutine(SwitchState("Ghost", 0.1f));
-        gameObject.GetComponent<BoxCollider2D>().isTrigger = true ;
+        //gameObject.GetComponent<BoxCollider2D>().isTrigger = true ;
         
         GameObject heart = Instantiate(heartPrefab, ThrowPoint.position, Quaternion.identity);
-        Rigidbody2D heartRb = heart.AddComponent<Rigidbody2D>();
+        Rigidbody2D heartRb = heart.GetComponent<Rigidbody2D>();
         heartRb.AddForce(arrow.right * thrust, ForceMode2D.Impulse);
+
     }
 
     public IEnumerator SwitchState(string tag, float delay = 0)
@@ -149,19 +174,28 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         gameObject.tag = tag;
+        gameObject.layer = LayerMask.NameToLayer(tag);
 
         if (tag == "Human")
         {
             rb.gravityScale = 9.8f;
-            gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+            //gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
             timeRemaining = 10;
             timerIsRunning = true;
             Invoke("Throw", dDayTimer);
+            if (playerId == 1)
+            {
+                animator.runtimeAnimatorController = playerOneHumanAnimationController;
+            }
+            else
+            {
+                animator.runtimeAnimatorController = playerTwoHumanAnimationController;
+            }
         }
         else
         {
-            rb.gravityScale = 0.0f;
-            gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+            rb.gravityScale = 0f;
+            //gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
         }
     }
 

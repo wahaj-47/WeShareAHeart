@@ -14,10 +14,10 @@ TagManager:
   - Transition
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - HumanObstacle
+  - GhostObstacle
+  - Human
+  - Ghost
   - 
   - 
   - 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Solidify : MonoBehaviour
 {
-    public BoxCollider2D box;
+    public CircleCollider2D circle;
 
     // Start is called before the first frame update
     void Start()
@@ -14,7 +14,7 @@ public class Solidify : MonoBehaviour
 
     void ToggleIsTrigger()
     {
-        box.isTrigger = false;
+        circle.isTrigger = false;
     }
 
 }
