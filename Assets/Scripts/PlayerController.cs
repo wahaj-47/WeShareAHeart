@@ -27,9 +27,7 @@ public class PlayerController : MonoBehaviour
     public bool timerIsRunning = false;
     private float timeToPickHeart;
 
-    public static bool hardMode = true;
-    
-
+    public static bool hardMode = false;
 
     public Text timer;
 
@@ -56,7 +54,8 @@ public class PlayerController : MonoBehaviour
             gameObject.tag = "Human";
             rb.gravityScale = 9.8f;
             //gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
-            Invoke("Throw", dDayTimer);
+            if(hardMode)
+                Invoke("Throw", dDayTimer);
             animator.runtimeAnimatorController = playerOneHumanAnimationController;
             gameObject.layer = LayerMask.NameToLayer("Human");
         }
@@ -97,8 +96,10 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (gameObject.tag == "Human")
+        if (gameObject.tag == "Human" && hardMode)
             timer.text = "Switching Forms In: " + Mathf.FloorToInt(timeRemaining % 60);
+        else
+            timer.text = "";
 
         movement.x = Input.GetAxisRaw("Player" + playerId + "Horizontal");
 
@@ -191,7 +192,8 @@ public class PlayerController : MonoBehaviour
             //gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
             timeRemaining = 20;
             timerIsRunning = true;
-            Invoke("Throw", dDayTimer);
+            if(hardMode)
+                Invoke("Throw", dDayTimer);
             if (playerId == 1)
             {
                 animator.runtimeAnimatorController = playerOneHumanAnimationController;
