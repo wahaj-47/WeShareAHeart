@@ -35,11 +35,13 @@ public class AudioManager : MonoBehaviour
 
 	private void Start()
 	{
+		//Debug.Log("Sound started!");
 		instance.Play("Theme");
 	}
 
 	public void Play(string sound)
 	{
+		Debug.Log(sound);
 		Sound s = Array.Find(sounds, item => item.name == sound);
 		if (s == null)
 		{

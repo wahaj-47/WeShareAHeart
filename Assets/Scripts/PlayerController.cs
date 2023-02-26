@@ -103,6 +103,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        AudioManager.instance.Play("Step");
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 
