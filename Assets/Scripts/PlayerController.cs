@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     Vector2 direction;
 
     public GameObject heartPrefab;
-    public float thrust = 20;
+    public float thrust = 30;
 
     public Transform arrow;
     public float rotationSpeed = 0.5f;
