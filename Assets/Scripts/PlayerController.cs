@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
 
     public Text timer;
 
+    private bool isMoving = false;
+
     void Start()    
     {
         timerIsRunning = true;
@@ -49,6 +51,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isMoving)
+        {
+            if (gameObject.tag == "Human")
+                AudioManager.instance.PlayOnce("Step");
+            else
+                AudioManager.instance.PlayOnce("Flame");
+        }
 
         if (timerIsRunning)
         {
@@ -68,13 +77,20 @@ public class PlayerController : MonoBehaviour
             timer.text = "Dropping in: " + Mathf.FloorToInt(timeRemaining % 60); ;
 
         movement.x = Input.GetAxisRaw("Player" + playerId + "Horizontal");
+
         if(movement.x < 0)
         {
+            isMoving = true;
             this.transform.rotation = Quaternion.Euler(new Vector3(0f, 180f, 0f));
         }
-        if(movement.x > 0)
+        else if(movement.x > 0)
         {
+            isMoving = true;
             this.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
+        }
+        else
+        {
+            isMoving = false;
         }
 
         if (gameObject.tag == "Ghost")
@@ -114,6 +130,7 @@ public class PlayerController : MonoBehaviour
 
     void Throw()
     {
+        AudioManager.instance.Play("Woosh");
         CancelInvoke("Throw");
 
         isAiming = false;
