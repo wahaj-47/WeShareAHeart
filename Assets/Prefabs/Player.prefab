@@ -320,7 +320,7 @@ MonoBehaviour:
   thrust: 12
   arrow: {fileID: 6885613955600999055}
   rotationSpeed: 0.5
-  RotAngleZ: 60
+  RotAngleZ: 90
   dDayTimer: 10
   timerIsRunning: 0
   timer: {fileID: 0}
@@ -415,7 +415,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9165288305972557535}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.082, y: -0.124, z: 0}
+  m_LocalPosition: {x: 0.467, y: -0.124, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
