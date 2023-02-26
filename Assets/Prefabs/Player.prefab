@@ -129,7 +129,7 @@ MonoBehaviour:
   rb: {fileID: 6648930984035363040}
   ThrowPoint: {fileID: 3767010726024943997}
   heartPrefab: {fileID: 5753842346520712193, guid: 76aa4f2af7340524c8eb2f3430a80f4c, type: 3}
-  thrust: 18
+  thrust: 12
   arrow: {fileID: 6885613955600999055}
   rotationSpeed: 0.5
   RotAngleZ: 60

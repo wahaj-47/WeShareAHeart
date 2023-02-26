@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor.Animations;
 
 public class PlayerController : MonoBehaviour
 {
@@ -33,11 +32,11 @@ public class PlayerController : MonoBehaviour
 
     public Animator animator;
 
-    public AnimatorController playerOneHumanAnimationController;
-    public AnimatorController playerOneGhostAnimationController;
+    public RuntimeAnimatorController playerOneHumanAnimationController;
+    public RuntimeAnimatorController playerOneGhostAnimationController;
 
-    public AnimatorController playerTwoHumanAnimationController;
-    public AnimatorController playerTwoGhostAnimationController;
+    public RuntimeAnimatorController playerTwoHumanAnimationController;
+    public RuntimeAnimatorController playerTwoGhostAnimationController;
 
     void Start()    
     {
