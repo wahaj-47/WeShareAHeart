@@ -16,15 +16,16 @@ public class PlayerController : MonoBehaviour
     Vector2 direction;
 
     public GameObject heartPrefab;
-    public float thrust = 30;
+    public float thrust = 40;
 
     public Transform arrow;
-    public float rotationSpeed = 0.5f;
-    public float RotAngleZ = 75;
+    public float rotationSpeed = 0.2f;
+    public float RotAngleZ = 90;
 
     public float dDayTimer = 10.0f;
-    private float timeRemaining = 10;
+    private float timeRemaining = 20;
     public bool timerIsRunning = false;
+    private float timeToPickHeart;
 
     public static bool hardMode = true;
     
@@ -97,7 +98,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if (gameObject.tag == "Human")
-            timer.text = "Dropping in: " + Mathf.FloorToInt(timeRemaining % 60);
+            timer.text = "Switching Forms In: " + Mathf.FloorToInt(timeRemaining % 60);
 
         movement.x = Input.GetAxisRaw("Player" + playerId + "Horizontal");
 
@@ -188,7 +189,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.gravityScale = 9.8f;
             //gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
-            timeRemaining = 10;
+            timeRemaining = 20;
             timerIsRunning = true;
             Invoke("Throw", dDayTimer);
             if (playerId == 1)
