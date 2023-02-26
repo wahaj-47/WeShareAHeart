@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if (gameObject.tag == "Human")
-            timer.text = "Dropping in: " + Mathf.FloorToInt(timeRemaining % 60); ;
+            timer.text = "Dropping in: " + Mathf.FloorToInt(timeRemaining % 60);
 
         movement.x = Input.GetAxisRaw("Player" + playerId + "Horizontal");
 

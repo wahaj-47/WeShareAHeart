@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Possess : MonoBehaviour
 {
+
     void Start()
     {
         Invoke("Die", 10.0f);
