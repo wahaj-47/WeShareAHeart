@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -21,13 +22,21 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed = 0.5f;
     public float RotAngleZ = 60;
 
+    public float dDayTimer = 10.0f;
+    private float timeRemaining = 10;
+    public bool timerIsRunning = false;
+
+    public Text timer;
+
     void Start()    
     {
+        timerIsRunning = true;
         if (playerId == 1)
         {
             gameObject.tag = "Human";
             rb.gravityScale = 9.8f;
             gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+            Invoke("Throw", dDayTimer);
         }
         else
         {
@@ -41,11 +50,40 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
+        if (timerIsRunning)
+        {
+            if (timeRemaining > 0)
+            {
+                timeRemaining -= Time.deltaTime;
+            }
+            else
+            {
+                Debug.Log("Time has run out!");
+                timeRemaining = 0;
+                timerIsRunning = false;
+            }
+        }
+
+        if (gameObject.tag == "Human")
+            timer.text = "Dropping in: " + Mathf.FloorToInt(timeRemaining % 60); ;
+
         movement.x = Input.GetAxisRaw("Player" + playerId + "Horizontal");
-        
-        if(gameObject.tag == "Ghost")
+        if(movement.x < 0)
+        {
+            this.transform.rotation = Quaternion.Euler(new Vector3(0f, 180f, 0f));
+        }
+        if(movement.x > 0)
+        {
+            this.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
+        }
+
+        if (gameObject.tag == "Ghost")
         {
             movement.y = Input.GetAxisRaw("Player" + playerId + "Vertical");
+        }
+        else
+        {
+            movement.y = 0;
         }
 
         if (Input.GetButtonDown("Fire" + playerId) && gameObject.tag == "Human" && !isAiming)
@@ -59,7 +97,7 @@ public class PlayerController : MonoBehaviour
         if (isAiming)
         {
             float rZ = Mathf.SmoothStep(-RotAngleZ, RotAngleZ, Mathf.PingPong(Time.time * rotationSpeed, 1));
-            arrow.rotation = Quaternion.Euler(0, 0, rZ);
+            arrow.localRotation = Quaternion.Euler(new Vector3(0f, 0f, rZ));
         }
     }
 
@@ -76,6 +114,8 @@ public class PlayerController : MonoBehaviour
 
     void Throw()
     {
+        CancelInvoke("Throw");
+
         isAiming = false;
         arrow.gameObject.SetActive(false);
 
@@ -91,13 +131,15 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        Debug.Log(tag + delay);
         gameObject.tag = tag;
 
         if (tag == "Human")
         {
             rb.gravityScale = 9.8f;
             gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+            timeRemaining = 10;
+            timerIsRunning = true;
+            Invoke("Throw", dDayTimer);
         }
         else
         {
