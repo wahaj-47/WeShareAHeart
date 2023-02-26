@@ -96,10 +96,13 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (gameObject.tag == "Human" && hardMode)
-            timer.text = "Switching Forms In: " + Mathf.FloorToInt(timeRemaining % 60);
-        else
-            timer.text = "";
+        if (gameObject.tag == "Human")
+        {
+            if(hardMode)
+                timer.text = "Switching Forms In: " + Mathf.FloorToInt(timeRemaining % 60);
+            else
+                timer.text = "";
+        }
 
         movement.x = Input.GetAxisRaw("Player" + playerId + "Horizontal");
 
@@ -192,8 +195,10 @@ public class PlayerController : MonoBehaviour
             //gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
             timeRemaining = 20;
             timerIsRunning = true;
+
             if(hardMode)
                 Invoke("Throw", dDayTimer);
+
             if (playerId == 1)
             {
                 animator.runtimeAnimatorController = playerOneHumanAnimationController;
