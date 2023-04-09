@@ -1,1 +1,1 @@
-<a href="https://4sleep.itch.io/spit-your-heart-out">![](Splash.png)</a>
+<a align=”center” href="https://4sleep.itch.io/spit-your-heart-out">![](Splash.png)</a>
