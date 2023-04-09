@@ -1,3 +1,1 @@
-<p align=”center”>
-    <a href="https://4sleep.itch.io/spit-your-heart-out"><img src="Splash.png"/></a>
-</p>
+<a align=”center” href="https://4sleep.itch.io/spit-your-heart-out"><img src="Splash.png"/></a>
