@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerHumanState : PlayerBaseState
 {
+    private bool isAiming;
+
     public override void EnterState(PlayerStateManager player)
     {
         base.EnterState(player);
@@ -15,9 +17,14 @@ public class PlayerHumanState : PlayerBaseState
     {
         base.UpdateState(player);
 
-        if (Input.GetButtonDown("Fire" + player.playerId))
+        if (Input.GetButton("Fire" + player.playerId))
         {
-            Aim(player);
+            isAiming = true;
+        }
+
+        if(isAiming)
+        {
+            CalculateTrajectory(player);
         }
     }
 
@@ -31,29 +38,23 @@ public class PlayerHumanState : PlayerBaseState
         base.OnCollisionEnter(player);
     }
 
-    void Aim(PlayerStateManager player)
+    void CalculateTrajectory(PlayerStateManager player)
     {
-        int steps = 25;
-        Vector2 startPosition = player.transform.position;
-        Vector2 endPosition = startPosition + new Vector2((player.transform.right * player.range).x, player.incline);
-
-        Vector2 velocity = startPosition - endPosition;
-
-        Vector3[] plots = new Vector3[steps];
-        float timestep = Time.fixedDeltaTime / Physics2D.velocityIterations;
-        Vector2 gravityAccelaration = Physics2D.gravity * player.rb.gravityScale * timestep * timestep;
-
-        float drag = 1f - timestep * player.rb.drag;
-        Vector2 moveStep = velocity * timestep;
-
-        for (int i = 0; i < steps; i++)
+        for (int i = 0; i < player.Points.Length; i++)
         {
-            moveStep += gravityAccelaration;
-            moveStep *= drag;
-            startPosition += moveStep;
-            plots[i] = startPosition;
+            player.Points[i].transform.position = CalculatePosition(player, i * 0.1f);
+            player.Points[i].SetActive(true);
         }
+    }
 
-        player.lr.SetPositions(plots);
+    Vector2 CalculatePosition(PlayerStateManager player, float t)
+    {
+        float incline = Mathf.PingPong(Time.time * player.aimSpeed, player.maxIncline);
+        Vector3 direction = player.transform.right;
+        direction.y = incline;
+
+        Vector2 position = (Vector2)(player.transform.position + direction.normalized * player.range * t) + 0.5f * Physics2D.gravity * (t * t);
+
+        return position;
     }
 }

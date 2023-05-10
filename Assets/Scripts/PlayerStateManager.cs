@@ -6,11 +6,18 @@ public class PlayerStateManager : MonoBehaviour
 {
     public int playerId = 1;
     public Rigidbody2D rb;
-    public LineRenderer lr;
     public Animator animator;
-    public float range = 5.0f;
-    public float incline = 5.0f;
 
+    public float range = 10f;
+    public float maxIncline = 10f;
+    public float aimSpeed = 0.5f;
+
+    public GameObject HeartPrefab;
+    public GameObject PointPrefab;
+
+    public int numberOfPoints = 10;
+    public GameObject[] Points;
+    
     PlayerBaseState currentState;
     PlayerHumanState HumanState = new PlayerHumanState();
     PlayerGhostState GhostState = new PlayerGhostState();
@@ -24,6 +31,14 @@ public class PlayerStateManager : MonoBehaviour
             currentState = GhostState;
 
         currentState.EnterState(this);
+
+        Points = new GameObject[numberOfPoints];
+
+        for(int i=0; i<numberOfPoints; i++)
+        {
+            Points[i] = Instantiate(PointPrefab, transform.position, Quaternion.identity);
+            Points[i].SetActive(false);
+        }
     }
 
     // Update is called once per frame
