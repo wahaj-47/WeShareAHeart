@@ -12,6 +12,8 @@ public class PlayerHumanRoamState : PlayerHumanBaseState
     {
         base.UpdateState(player);
 
+        player.animator.SetBool("isMoving", base.movement.x != 0);
+
         if (Input.GetButtonDown("Fire" + player.playerId))
         {
             player.SwitchState(player.HumanAimState);

@@ -16,6 +16,9 @@ public class PlayerGhostState : PlayerBaseState
     public override void UpdateState(PlayerStateManager player)
     {
         base.UpdateState(player);
+
+        player.animator.SetBool("isMoving", base.movement.x != 0);
+
         base.movement.y = Input.GetAxisRaw("Player" + player.playerId + "Vertical");
     }
 

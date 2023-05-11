@@ -11,8 +11,6 @@ public class PlayerBaseState : BaseState
     {
         movement.x = Input.GetAxisRaw("Player" + player.playerId + "Horizontal");
 
-        player.animator.SetBool("isMoving", movement.x != 0);
-
         if (movement.x < 0)
         {
             player.transform.rotation = Quaternion.Euler(new Vector3(0f, 180f, 0f));

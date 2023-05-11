@@ -6,6 +6,7 @@ public class PlayerHumanAimState : PlayerHumanBaseState
 {
     private Vector3 throwDirection = new Vector3(0,0,0);
     private float incline = 5.0f;
+    private float lift = 0.0f;
 
     public override void EnterState(PlayerStateManager player)
     {
@@ -18,6 +19,9 @@ public class PlayerHumanAimState : PlayerHumanBaseState
 
     public override void UpdateState(PlayerStateManager player)
     {
+        base.UpdateState(player);
+
+        lift = Input.GetAxisRaw("Player" + player.playerId + "Vertical");
 
         if (Input.GetButtonDown("Fire" + player.playerId))
         {
@@ -28,8 +32,7 @@ public class PlayerHumanAimState : PlayerHumanBaseState
 
     public override void FixedUpdateState(PlayerStateManager player)
     {
-        float direction = player.transform.rotation == Quaternion.Euler(new Vector3(0f, 0f, 0f)) ? -1 : 1;
-        float potentialIncline = incline + direction * player.aimSpeed * movement.x * Time.fixedDeltaTime;
+        float potentialIncline = incline + player.aimSpeed * lift * Time.fixedDeltaTime;
         
         if (potentialIncline > player.minIncline && potentialIncline < player.maxIncline)
         {
