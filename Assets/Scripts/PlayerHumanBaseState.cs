@@ -23,9 +23,9 @@ public class PlayerHumanBaseState : PlayerBaseState
         base.FixedUpdateState(player);
     }
 
-    public override void OnCollisionEnter(PlayerStateManager player)
+    public override void OnCollisionEnter2D(PlayerStateManager player, Collision2D other)
     {
-        base.OnCollisionEnter(player);
+        base.OnCollisionEnter2D(player, other);
     }
 
 }

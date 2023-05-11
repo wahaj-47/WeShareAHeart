@@ -1,15 +1,11 @@
 using UnityEngine;
 
-public class PlayerHumanRoamState : PlayerBaseState
+public class PlayerHumanRoamState : PlayerHumanBaseState
 {
 
     public override void EnterState(PlayerStateManager player)
     {
         base.EnterState(player);
-
-        player.gameObject.tag = "Human";
-        player.rb.gravityScale = 9.8f;
-        player.gameObject.layer = LayerMask.NameToLayer("Human");
     }
 
     public override void UpdateState(PlayerStateManager player)
@@ -28,9 +24,9 @@ public class PlayerHumanRoamState : PlayerBaseState
         base.FixedUpdateState(player);
     }
 
-    public override void OnCollisionEnter(PlayerStateManager player)
+    public override void OnCollisionEnter2D(PlayerStateManager player, Collision2D other)
     {
-        base.OnCollisionEnter(player);
+        base.OnCollisionEnter2D(player, other);
     }
 
 }

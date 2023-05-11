@@ -3,11 +3,9 @@ using UnityEngine;
 public class PlayerBaseState : BaseState
 {
     public Vector2 movement;
-    public float moveSpeed = 2f;
+    public float moveSpeed = 3f;
 
-    public override void EnterState(PlayerStateManager player)
-    {
-    }
+    public override void EnterState(PlayerStateManager player){}
 
     public override void UpdateState(PlayerStateManager player)
     {
@@ -30,8 +28,5 @@ public class PlayerBaseState : BaseState
         player.rb.MovePosition(player.rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 
-    public override void OnCollisionEnter(PlayerStateManager player)
-    {
-
-    }
+    public override void OnCollisionEnter2D(PlayerStateManager player, Collision2D other){}
 }

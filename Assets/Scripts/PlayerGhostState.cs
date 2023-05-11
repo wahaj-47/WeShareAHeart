@@ -24,9 +24,21 @@ public class PlayerGhostState : PlayerBaseState
         base.FixedUpdateState(player);
     }
 
-    public override void OnCollisionEnter(PlayerStateManager player)
+    public override void OnCollisionEnter2D(PlayerStateManager player, Collision2D other)
     {
-        base.OnCollisionEnter(player);
+        base.OnCollisionEnter2D(player, other);
+
+        if(other.gameObject.tag == "Heart")
+        {
+            GameObject.Destroy(other.gameObject);
+
+            player.animator.SetBool("turningHuman", true);
+            
+            // Reset "throwing" bool parameter
+            player.animator.SetBool("throwing", false);
+
+            player.SwitchState(player.HumanRoamState);
+        }
     }
 
 }

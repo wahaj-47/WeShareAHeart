@@ -38,9 +38,9 @@ public class PlayerHumanAimState : PlayerHumanBaseState
         }
     }
 
-    public override void OnCollisionEnter(PlayerStateManager player)
+    public override void OnCollisionEnter2D(PlayerStateManager player, Collision2D other)
     {
-        base.OnCollisionEnter(player);
+        base.OnCollisionEnter2D(player, other);
     }
 
     void CalculateTrajectory(PlayerStateManager player)
@@ -79,6 +79,8 @@ public class PlayerHumanAimState : PlayerHumanBaseState
 
         // Play throwing animation
         player.animator.SetBool("throwing", true);
+
+        player.animator.SetBool("turningHuman", false);
 
         // Switch to roaming
         player.SwitchState(player.GhostState);
