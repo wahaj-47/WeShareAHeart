@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerBaseState : BaseState
 {
     public Vector2 movement;
-    public float moveSpeed = 5f;
+    public float moveSpeed = 2f;
 
     public override void EnterState(PlayerStateManager player)
     {
@@ -12,8 +12,9 @@ public class PlayerBaseState : BaseState
     public override void UpdateState(PlayerStateManager player)
     {
         movement.x = Input.GetAxisRaw("Player" + player.playerId + "Horizontal");
+
         player.animator.SetBool("isMoving", movement.x != 0);
-            
+
         if (movement.x < 0)
         {
             player.transform.rotation = Quaternion.Euler(new Vector3(0f, 180f, 0f));
@@ -22,7 +23,6 @@ public class PlayerBaseState : BaseState
         {
             player.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
         }
-
     }
 
     public override void FixedUpdateState(PlayerStateManager player)

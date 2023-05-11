@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 8115760236687650510}
   - component: {fileID: -8385751418628480912}
   - component: {fileID: 8728665136471953702}
-  - component: {fileID: 3524157629258239482}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -34,7 +33,8 @@ Transform:
   m_LocalPosition: {x: -0.41304344, y: -0.6956521, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5689583090642276419}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -53,7 +53,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 9.8
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -123,14 +123,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5df281ad813772a4a9c75931d4c90ac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerId: 2
+  playerId: 1
   rb: {fileID: 6648930984035363040}
   animator: {fileID: -8385751418628480912}
   range: 5
-  maxIncline: 10
-  aimSpeed: 0.5
-  HeartPrefab: {fileID: 5753842346520712193, guid: 76aa4f2af7340524c8eb2f3430a80f4c, type: 3}
+  minIncline: 0
+  maxIncline: 7
+  aimSpeed: 5
+  HeartPrefab: {fileID: 551375177411589821, guid: fe09b47af3dcf2d44975d60ae7de639b, type: 3}
   PointPrefab: {fileID: 551375177411589821, guid: 8360f64b7e0d97c4fa21515dab3a4843, type: 3}
+  ThrowPoint: {fileID: 8360100137364600030}
   numberOfPoints: 10
   Points: []
 --- !u!61 &8115760236687650510
@@ -146,7 +148,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.034654707, y: 0.20040745}
+  m_Offset: {x: -0.0023292303, y: 0.06507987}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -157,7 +159,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5712094, y: 0.6613878}
+  m_Size: {x: 0.25852704, y: 0.5689281}
   m_EdgeRadius: 0
 --- !u!95 &-8385751418628480912
 Animator:
@@ -192,22 +194,37 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.030793935, y: -0.15499133}
+  m_Offset: {x: -0.0036683977, y: -0.2188726}
   serializedVersion: 2
-  m_Radius: 0.26142815
---- !u!114 &3524157629258239482
-MonoBehaviour:
+  m_Radius: 0.1294629
+--- !u!1 &8360100137364600030
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6648930984035363047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 951099334
-  AlwaysReplicateAsRoot: 0
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5689583090642276419}
+  m_Layer: 0
+  m_Name: ThrowPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5689583090642276419
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8360100137364600030}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.164, y: 0.05734092, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6648930984035363042}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

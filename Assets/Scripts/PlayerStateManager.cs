@@ -8,25 +8,28 @@ public class PlayerStateManager : MonoBehaviour
     public Rigidbody2D rb;
     public Animator animator;
 
-    public float range = 10f;
-    public float maxIncline = 10f;
-    public float aimSpeed = 0.5f;
+    public float range = 3f;
+    public float minIncline = 0f;
+    public float maxIncline = 7f;
+    public float aimSpeed = 5f;
 
     public GameObject HeartPrefab;
     public GameObject PointPrefab;
+    public GameObject ThrowPoint;
 
     public int numberOfPoints = 10;
     public GameObject[] Points;
     
-    PlayerBaseState currentState;
-    PlayerHumanState HumanState = new PlayerHumanState();
-    PlayerGhostState GhostState = new PlayerGhostState();
+    public PlayerBaseState currentState;
+    public PlayerBaseState HumanRoamState = new PlayerHumanRoamState();
+    public PlayerBaseState HumanAimState = new PlayerHumanAimState();
+    public PlayerBaseState GhostState = new PlayerGhostState();
 
     // Start is called before the first frame update
     void Start()
     {
         if (playerId == 1)
-            currentState = HumanState;
+            currentState = HumanRoamState;
         else
             currentState = GhostState;
 
@@ -50,5 +53,11 @@ public class PlayerStateManager : MonoBehaviour
     void FixedUpdate()
     {
         currentState.FixedUpdateState(this);
+    }
+
+    public void SwitchState(PlayerBaseState state)
+    {
+        currentState = state;
+        currentState.EnterState(this);
     }
 }
