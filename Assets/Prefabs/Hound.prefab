@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4032780699745055784}
   - component: {fileID: 3676540974999800921}
   - component: {fileID: 6168223823857305913}
+  - component: {fileID: 6804787529881846380}
   m_Layer: 0
   m_Name: Hound
   m_TagString: Untagged
@@ -181,3 +182,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.8692017, y: 0.37499994}
   m_EdgeRadius: 0
+--- !u!114 &6804787529881846380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3963915277633230913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e74b07b6e8e056449f3f1b3d4268512, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

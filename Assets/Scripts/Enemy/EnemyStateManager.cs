@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class EnemyStateManager : BaseStateManager
 {
-    // Start is called before the first frame update
-    public override void Start()
+
+    public Transform target;
+
+    public BaseState EnemyGuardState;
+    public BaseState EnemyAttackState;
+
+    void Awake()
     {
-        
+        EnemyGuardState = new EnemyGuardState(this);
+        EnemyAttackState = new EnemyAttackState(this);
     }
 
-    // Update is called once per frame
-    public override void Update()
+    public override void Start()
     {
-        
+        base.Start();
     }
+
+    public override BaseState GetInitialState()
+    {
+        return EnemyGuardState;
+    }
+
 }

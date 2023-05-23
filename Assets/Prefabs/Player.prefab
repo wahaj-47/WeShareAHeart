@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 6648930984035363040}
   - component: {fileID: 7091982613227915851}
   - component: {fileID: 1384526227071673864}
-  - component: {fileID: 8115760236687650510}
   - component: {fileID: -8385751418628480912}
-  - component: {fileID: 8728665136471953702}
+  - component: {fileID: 4370006226376578736}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -135,32 +134,6 @@ MonoBehaviour:
   ThrowPoint: {fileID: 8360100137364600030}
   numberOfPoints: 10
   Points: []
---- !u!61 &8115760236687650510
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6648930984035363047}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0023292303, y: 0.06507987}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.26, y: 0.7}
-    newSize: {x: 0.26, y: 0.7}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.25852704, y: 0.5689281}
-  m_EdgeRadius: 0
 --- !u!95 &-8385751418628480912
 Animator:
   serializedVersion: 5
@@ -181,8 +154,8 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!58 &8728665136471953702
-CircleCollider2D:
+--- !u!70 &4370006226376578736
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -194,9 +167,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0036683977, y: -0.2188726}
-  serializedVersion: 2
-  m_Radius: 0.1294629
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.26, y: 0.7}
+  m_Direction: 0
 --- !u!1 &8360100137364600030
 GameObject:
   m_ObjectHideFlags: 0

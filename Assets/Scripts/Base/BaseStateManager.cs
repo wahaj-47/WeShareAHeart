@@ -33,6 +33,18 @@ public abstract class BaseStateManager : MonoBehaviour
             currentState.OnCollisionEnter2D(other);
     }
 
+    public virtual void OnTriggerStay2D(Collider2D other)
+    {
+        if (currentState != null)
+            currentState.OnTriggerStay2D(other);
+    }
+
+    public virtual void OnTriggerExit2D(Collider2D other)
+    {
+        if (currentState != null)
+            currentState.OnTriggerExit2D(other);
+    }
+
     public virtual void SwitchState(BaseState state)
     {
         currentState = state;
