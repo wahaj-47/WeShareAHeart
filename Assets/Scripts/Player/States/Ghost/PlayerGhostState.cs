@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerGhostState : PlayerBaseState
 {
+
     public PlayerGhostState(PlayerStateManager manager) : base(manager) { }
 
     public override void EnterState()
@@ -29,6 +30,10 @@ public class PlayerGhostState : PlayerBaseState
 
         if(other.gameObject.tag == "Heart")
         {
+            int spawnerId = other.gameObject.GetComponent<Spawner>().playerId;
+
+            if (spawnerId == ((PlayerStateManager)manager).playerId) return;
+
             GameObject.Destroy(other.gameObject);
 
             ((PlayerStateManager)manager).animator.SetBool("turningHuman", true);

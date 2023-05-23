@@ -10,6 +10,7 @@ public class EnemyGuardState : BaseState
     public override void EnterState()
     {
         Debug.Log("Looking for target");
+        ((EnemyStateManager)manager).animator.SetFloat("Velocity", 0.0f);
         ((EnemyStateManager)manager).target = null;
     }
 
@@ -18,7 +19,7 @@ public class EnemyGuardState : BaseState
         if(other.tag == "Human")
         {
             ((EnemyStateManager)manager).target = other.transform;
-            ((EnemyStateManager)manager).SwitchState(((EnemyStateManager)manager).EnemyAttackState);
+            ((EnemyStateManager)manager).SwitchState(((EnemyStateManager)manager).EnemyChargeState);
         }
     }
 }

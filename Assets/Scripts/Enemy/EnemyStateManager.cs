@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class EnemyStateManager : BaseStateManager
 {
+    public Rigidbody2D rb;
+    public Animator animator;
 
+    [HideInInspector]
     public Transform target;
 
     public BaseState EnemyGuardState;
-    public BaseState EnemyAttackState;
+    public BaseState EnemyChargeState;
 
     void Awake()
     {
         EnemyGuardState = new EnemyGuardState(this);
-        EnemyAttackState = new EnemyAttackState(this);
+        EnemyChargeState = new EnemyChargeState(this);
     }
 
     public override void Start()
