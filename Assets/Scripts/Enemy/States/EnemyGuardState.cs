@@ -18,8 +18,22 @@ public class EnemyGuardState : BaseState
     {
         if(other.tag == "Human")
         {
-            ((EnemyStateManager)manager).target = other.transform;
-            ((EnemyStateManager)manager).SwitchState(((EnemyStateManager)manager).EnemyChargeState);
+            Vector2 distance =  other.transform.position - ((EnemyStateManager)manager).transform.position;
+            float magnitude = distance.magnitude;
+            Vector2 direction = distance.normalized;
+
+
+            RaycastHit2D hit = Physics2D.Raycast(((EnemyStateManager)manager).transform.position, direction, magnitude);
+
+            if (hit.collider != null)
+            {
+                if(hit.collider.tag == "Human")
+                {
+                    ((EnemyStateManager)manager).target = other.transform;
+                    ((EnemyStateManager)manager).SwitchState(((EnemyStateManager)manager).EnemyChargeState);
+                }
+            }
+
         }
     }
 }

@@ -300,6 +300,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hound
       objectReference: {fileID: 0}
+    - target: {fileID: 3963915277633230913, guid: a032ca56f5cb79b4ebc3ee58db2fb338, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6804787529881846380, guid: a032ca56f5cb79b4ebc3ee58db2fb338, type: 3}
       propertyPath: rb
       value: 
