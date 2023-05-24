@@ -12,11 +12,13 @@ public class EnemyStateManager : BaseStateManager
 
     public BaseState EnemyGuardState;
     public BaseState EnemyChargeState;
+    public BaseState EnemyAttackState;
 
     void Awake()
     {
         EnemyGuardState = new EnemyGuardState(this);
         EnemyChargeState = new EnemyChargeState(this);
+        EnemyAttackState = new EnemyAttackState(this);
     }
 
     public override void Start()

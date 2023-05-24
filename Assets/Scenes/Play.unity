@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!50 &49252238 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 4032780699745055784, guid: a032ca56f5cb79b4ebc3ee58db2fb338, type: 3}
-  m_PrefabInstance: {fileID: 1195636751}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &384858846
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,14 +295,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hound
       objectReference: {fileID: 0}
-    - target: {fileID: 3963915277633230913, guid: a032ca56f5cb79b4ebc3ee58db2fb338, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6804787529881846380, guid: a032ca56f5cb79b4ebc3ee58db2fb338, type: 3}
-      propertyPath: rb
-      value: 
-      objectReference: {fileID: 49252238}
     - target: {fileID: 7366706285653077893, guid: a032ca56f5cb79b4ebc3ee58db2fb338, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -375,7 +362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6648930984035363042, guid: a128d4eed15252947bdfb4ecb541ce57, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.11
+      value: 13.01
       objectReference: {fileID: 0}
     - target: {fileID: 6648930984035363042, guid: a128d4eed15252947bdfb4ecb541ce57, type: 3}
       propertyPath: m_LocalPosition.y
@@ -643,7 +630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6648930984035363042, guid: a128d4eed15252947bdfb4ecb541ce57, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.92
+      value: 15.04
       objectReference: {fileID: 0}
     - target: {fileID: 6648930984035363042, guid: a128d4eed15252947bdfb4ecb541ce57, type: 3}
       propertyPath: m_LocalPosition.y

@@ -13,9 +13,8 @@ GameObject:
   - component: {fileID: 7907272390010002797}
   - component: {fileID: 4032780699745055784}
   - component: {fileID: 3676540974999800921}
-  - component: {fileID: 6168223823857305913}
   - component: {fileID: 6804787529881846380}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,32 +154,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.59375, y: 0.375}
-  m_EdgeRadius: 0
---- !u!61 &6168223823857305913
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3963915277633230913}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -2.5979571, y: 0.000000029802322}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.59375, y: 0.375}
-    newSize: {x: 0.38, y: 0.24}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.8692017, y: 0.37499994}
   m_EdgeRadius: 0
 --- !u!114 &6804787529881846380
 MonoBehaviour:
