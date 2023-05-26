@@ -9,7 +9,6 @@ public class EnemyGuardState : EnemyBaseState
 
     public override void EnterState()
     {
-        Debug.Log("Looking for target");
         ((EnemyStateManager)manager).animator.SetFloat("Velocity", 0.0f);
         ((EnemyStateManager)manager).target = null;
     }

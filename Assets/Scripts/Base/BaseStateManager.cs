@@ -44,4 +44,10 @@ public abstract class BaseStateManager : MonoBehaviour
     {
         return null;
     }
+
+    public IEnumerator DoCoroutine(IEnumerator coroutine)
+    {
+        while (coroutine.MoveNext())
+            yield return coroutine.Current;
+    }
 }

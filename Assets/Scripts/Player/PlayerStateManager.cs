@@ -20,15 +20,17 @@ public class PlayerStateManager : BaseStateManager
     public int numberOfPoints = 10;
     public GameObject[] Points;
 
-    public PlayerBaseState HumanRoamState;
-    public PlayerBaseState HumanAimState;
-    public PlayerBaseState GhostState;
+    public BaseState HumanRoamState;
+    public BaseState HumanAimState;
+    public BaseState GhostState;
+    public BaseState HumanAttackedState;
 
     void Awake()
     {
         HumanRoamState = new PlayerHumanRoamState(this);
         HumanAimState = new PlayerHumanAimState(this);
         GhostState = new PlayerGhostState(this);
+        HumanAttackedState = new PlayerHumanAttackedState(this);
     }
 
     // Start is called before the first frame update
@@ -52,4 +54,5 @@ public class PlayerStateManager : BaseStateManager
         else
             return GhostState;
     }
+
 }

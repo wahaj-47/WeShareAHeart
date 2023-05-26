@@ -26,7 +26,7 @@ public class EnemyChargeState : EnemyBaseState
         {
             Vector2 distance = ((EnemyStateManager)manager).target.position - ((EnemyStateManager)manager).transform.position;
             direction = distance.normalized;
-            if(distance.magnitude < 1)
+            if(distance.magnitude < 1f)
             {
                 ((EnemyStateManager)manager).SwitchState(((EnemyStateManager)manager).EnemyAttackState);
             }

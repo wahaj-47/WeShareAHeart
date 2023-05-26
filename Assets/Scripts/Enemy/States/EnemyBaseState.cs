@@ -9,9 +9,11 @@ public class EnemyBaseState : BaseState
 
     public override void OnCollisionEnter2D(Collision2D other) 
     {
+        Debug.Log(other.collider.name);
         if(other.collider.tag == "Human")
         {
-            Debug.Log("Attack successful");
+            PlayerStateManager manager = other.collider.gameObject.GetComponent<PlayerStateManager>();
+            manager.SwitchState(manager.HumanAttackedState);
         }
     }
 
