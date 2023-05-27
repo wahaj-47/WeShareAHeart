@@ -15,7 +15,7 @@ public class EnemyGuardState : EnemyBaseState
 
     public override void UpdateState()
     {
-        if (CanSeePlayer())
+        if (CanSee("Human"))
         {
             ((EnemyStateManager)manager).SwitchState(((EnemyStateManager)manager).EnemyChargeState);
         }
