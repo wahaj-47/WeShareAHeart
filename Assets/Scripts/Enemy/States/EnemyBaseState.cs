@@ -5,14 +5,19 @@ using UnityEngine;
 public class EnemyBaseState : BaseState
 {
 
-    private Vector2 BoxSize = new Vector2(3, 3);
+    private Vector2 BoxSize = new Vector2(3, 1);
 
     public EnemyBaseState(EnemyStateManager manager) : base(manager) { }
 
     public override void OnCollisionEnter2D(Collision2D other) 
     {
-        Debug.Log(other.collider.name);
-        if(other.collider.tag == "Human")
+
+        if (other.collider.tag == "Heart")
+        {
+            Debug.Log("Devour the heart. Game over.");
+        }
+
+        if (other.collider.tag == "Human")
         {
             PlayerStateManager manager = other.collider.gameObject.GetComponent<PlayerStateManager>();
             manager.SwitchState(manager.HumanAttackedState);

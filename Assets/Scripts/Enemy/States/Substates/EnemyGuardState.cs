@@ -15,13 +15,9 @@ public class EnemyGuardState : EnemyBaseState
 
     public override void UpdateState()
     {
-        if (CanSee("Human"))
+        if (CanSee("Human") || CanSee("Heart"))
         {
             ((EnemyStateManager)manager).SwitchState(((EnemyStateManager)manager).EnemyChargeState);
-        }
-        if (CanSee("Heart"))
-        {
-            Debug.Log("Bad move human");
         }
     }
 

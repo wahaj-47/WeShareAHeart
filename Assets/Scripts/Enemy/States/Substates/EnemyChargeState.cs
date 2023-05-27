@@ -17,19 +17,24 @@ public class EnemyChargeState : EnemyBaseState
     public override void FixedUpdateState()
     {
 
-        if (CanSee("Human"))
+        if (!CanSee("Human") && !CanSee("Heart"))
+        {
+            ((EnemyStateManager)manager).SwitchState(((EnemyStateManager)manager).EnemyGuardState);   
+        }
+
+        if (((EnemyStateManager)manager).target)
         {
             Vector2 distance = ((EnemyStateManager)manager).target.position - ((EnemyStateManager)manager).transform.position;
             direction = distance.normalized;
+            direction.y = 0;
 
-            if (distance.magnitude < 1f)
-            {
-                ((EnemyStateManager)manager).SwitchState(((EnemyStateManager)manager).EnemyAttackState);
+            if (((EnemyStateManager)manager).target.tag == "Human")
+            {   
+                if (distance.magnitude < 1f)
+                {
+                    ((EnemyStateManager)manager).SwitchState(((EnemyStateManager)manager).EnemyAttackState);
+                }
             }
-        }
-        else
-        {
-            ((EnemyStateManager)manager).SwitchState(((EnemyStateManager)manager).EnemyGuardState);
         }
 
         // Move towards the target
