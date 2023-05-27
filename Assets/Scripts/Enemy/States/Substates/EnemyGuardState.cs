@@ -19,6 +19,10 @@ public class EnemyGuardState : EnemyBaseState
         {
             ((EnemyStateManager)manager).SwitchState(((EnemyStateManager)manager).EnemyChargeState);
         }
+        if (CanSee("Heart"))
+        {
+            Debug.Log("Bad move human");
+        }
     }
 
 }
