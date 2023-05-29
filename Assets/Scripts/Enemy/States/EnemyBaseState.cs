@@ -14,7 +14,8 @@ public class EnemyBaseState : BaseState
 
         if (other.collider.tag == "Heart")
         {
-            Debug.Log("Devour the heart. Game over.");
+            GameObject.Destroy(other.collider.gameObject);
+            ((EnemyStateManager)manager).SwitchState(((EnemyStateManager)manager).EnemyDevourState);
         }
 
         if (other.collider.tag == "Human")
