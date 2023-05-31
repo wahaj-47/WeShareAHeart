@@ -22,8 +22,11 @@ public class PlayerStateManager : BaseStateManager
 
     public BaseState HumanRoamState;
     public BaseState HumanAimState;
-    public BaseState GhostState;
     public BaseState HumanAttackedState;
+    public BaseState HumanInteractState;
+    public BaseState GhostState;
+
+    public IInteractable interactable;
 
     void Awake()
     {
@@ -31,6 +34,7 @@ public class PlayerStateManager : BaseStateManager
         HumanAimState = new PlayerHumanAimState(this);
         GhostState = new PlayerGhostState(this);
         HumanAttackedState = new PlayerHumanAttackedState(this);
+        HumanInteractState = new PlayerHumanInteractState(this);
     }
 
     // Start is called before the first frame update

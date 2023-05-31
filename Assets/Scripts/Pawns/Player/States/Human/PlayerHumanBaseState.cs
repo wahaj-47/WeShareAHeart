@@ -15,6 +15,17 @@ public class PlayerHumanBaseState : PlayerBaseState
         ((PlayerStateManager)manager).animator.SetBool("hasHeart", true);
     }
 
+    public override void OnTriggerEnter2D(Collider2D other)
+    {
+        IInteractable interactable = other.GetComponent<IInteractable>();
+
+        if(interactable != null)
+        {
+            ((PlayerStateManager)manager).interactable = interactable;
+            ((PlayerStateManager)manager).SwitchState(((PlayerStateManager)manager).HumanInteractState);
+        }
+    }
+
     protected void Fire(Vector3 throwDirection)
     {
 
