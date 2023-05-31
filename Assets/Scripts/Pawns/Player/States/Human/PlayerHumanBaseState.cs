@@ -26,6 +26,15 @@ public class PlayerHumanBaseState : PlayerBaseState
         }
     }
 
+    public override void OnTriggerExit2D(Collider2D other)
+    {
+        if (((PlayerStateManager)manager).interactable != null)
+        {
+            ((PlayerStateManager)manager).interactable = null;
+            ((PlayerStateManager)manager).SwitchState(((PlayerStateManager)manager).HumanRoamState);
+        }
+    }
+
     protected void Fire(Vector3 throwDirection)
     {
 

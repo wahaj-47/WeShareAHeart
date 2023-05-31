@@ -14,5 +14,6 @@ public abstract class BaseState
     public virtual void FixedUpdateState() { }
     public virtual void OnCollisionEnter2D(Collision2D other) { }
     public virtual void OnTriggerEnter2D(Collider2D other) { }
+    public virtual void OnTriggerExit2D(Collider2D other) { }
 
 }
