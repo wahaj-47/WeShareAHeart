@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening;
 
 public class PlayerGhostRoamState : PlayerBaseState
 {
@@ -9,7 +10,8 @@ public class PlayerGhostRoamState : PlayerBaseState
     {
         base.EnterState();
 
-        ((PlayerStateManager)manager).transform.localScale = Vector3.one;
+        DOTween.To(() => ((PlayerStateManager)manager).sprite.color, x => ((PlayerStateManager)manager).sprite.color = x, new Color(255, 255, 255, 1), 0.5f);
+        DOTween.To(() => ((PlayerStateManager)manager).transform.localScale, x => ((PlayerStateManager)manager).transform.localScale = x, new Vector3(1f, 1f, 1f), 0.5f);
         ((PlayerStateManager)manager).gameObject.tag = "Ghost";
         ((PlayerStateManager)manager).rb.gravityScale = 0f;
         ((PlayerStateManager)manager).gameObject.layer = LayerMask.NameToLayer("Ghost");
