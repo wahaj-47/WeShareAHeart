@@ -14,12 +14,12 @@ TagManager:
   - Transition
   - Water
   - UI
-  - HumanObstacle
-  - GhostObstacle
+  - Object
   - Enemy
   - Ghost
   - Human
   - Heart
+  - 
   - 
   - 
   - 

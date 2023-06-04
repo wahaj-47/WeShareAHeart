@@ -1,18 +1,20 @@
 using UnityEngine;
 
-public class PlayerGhostState : PlayerBaseState
+public class PlayerGhostRoamState : PlayerBaseState
 {
 
-    public PlayerGhostState(PlayerStateManager manager) : base(manager) { }
+    public PlayerGhostRoamState(PlayerStateManager manager) : base(manager) { }
 
     public override void EnterState()
     {
         base.EnterState();
 
+        ((PlayerStateManager)manager).transform.localScale = Vector3.one;
         ((PlayerStateManager)manager).gameObject.tag = "Ghost";
         ((PlayerStateManager)manager).rb.gravityScale = 0f;
         ((PlayerStateManager)manager).gameObject.layer = LayerMask.NameToLayer("Ghost");
         ((PlayerStateManager)manager).animator.SetBool("hasHeart", false);
+        ((PlayerStateManager)manager).capsule.isTrigger = true;
     }
 
     public override void UpdateState()
@@ -22,11 +24,19 @@ public class PlayerGhostState : PlayerBaseState
         ((PlayerStateManager)manager).animator.SetBool("isMoving", base.movement.x != 0);
 
         base.movement.y = Input.GetAxisRaw("Player" + ((PlayerStateManager)manager).playerId + "Vertical");
+
+        if (Input.GetButtonDown("Fire" + ((PlayerStateManager)manager).playerId))
+        {
+            if (((PlayerStateManager)manager).interactable != null)
+            {
+                ((PlayerStateManager)manager).interactable.Interact((PlayerStateManager)manager);
+            }
+        }
     }
 
-    public override void OnCollisionEnter2D(Collision2D other)
+    public override void OnTriggerEnter2D(Collider2D other)
     {
-        base.OnCollisionEnter2D(other);
+        base.OnTriggerEnter2D(other);
 
         if(other.gameObject.tag == "Heart")
         {
@@ -43,6 +53,7 @@ public class PlayerGhostState : PlayerBaseState
 
             ((PlayerStateManager)manager).SwitchState(((PlayerStateManager)manager).HumanRoamState);
         }
+   
     }
 
 }

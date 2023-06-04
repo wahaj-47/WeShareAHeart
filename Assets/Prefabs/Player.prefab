@@ -132,6 +132,7 @@ MonoBehaviour:
   HeartPrefab: {fileID: 551375177411589821, guid: fe09b47af3dcf2d44975d60ae7de639b, type: 3}
   PointPrefab: {fileID: 551375177411589821, guid: 8360f64b7e0d97c4fa21515dab3a4843, type: 3}
   ThrowPoint: {fileID: 8360100137364600030}
+  capsule: {fileID: 4370006226376578736}
   numberOfPoints: 10
   Points: []
 --- !u!95 &-8385751418628480912

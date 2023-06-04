@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerBaseState : BaseState
 {
     public Vector2 movement;
-    public float moveSpeed = 3f;
+    private float moveSpeed = 3f;
 
     public PlayerBaseState(PlayerStateManager manager) : base(manager){}
 
@@ -24,6 +24,24 @@ public class PlayerBaseState : BaseState
     public override void FixedUpdateState()
     {
         ((PlayerStateManager)manager).rb.MovePosition(((PlayerStateManager)manager).rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+    }
+
+    public override void OnTriggerEnter2D(Collider2D other)
+    {
+        IInteractable interactable = other.GetComponent<IInteractable>();
+
+        if (interactable != null)
+        {
+            ((PlayerStateManager)manager).interactable = interactable;
+        }
+    }
+
+    public override void OnTriggerExit2D(Collider2D other)
+    {
+        if (((PlayerStateManager)manager).interactable != null)
+        {
+            ((PlayerStateManager)manager).interactable = null;
+        }
     }
 
 }

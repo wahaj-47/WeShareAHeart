@@ -13,7 +13,14 @@ public class PlayerHumanRoamState : PlayerHumanBaseState
 
         if (Input.GetButtonDown("Fire" + ((PlayerStateManager)manager).playerId))
         {
-            ((PlayerStateManager)manager).SwitchState(((PlayerStateManager)manager).HumanAimState);
+            if (((PlayerStateManager)manager).interactable != null)
+            {
+                ((PlayerStateManager)manager).interactable.Interact((PlayerStateManager)manager);
+            }
+            else
+            {
+                ((PlayerStateManager)manager).SwitchState(((PlayerStateManager)manager).HumanAimState);
+            }
         }
 
     }

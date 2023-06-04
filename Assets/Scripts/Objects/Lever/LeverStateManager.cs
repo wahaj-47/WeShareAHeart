@@ -16,9 +16,9 @@ public class LeverStateManager : BaseStateManager, IInteractable
         LeverClosedState = new LeverClosedState(this);
     }
 
-    public void Interact()
+    public void Interact(PlayerStateManager interactor)
     {
-        ((IInteractable)currentState).Interact();
+        ((IInteractable)currentState).Interact(interactor);
     }
 
     public override BaseState GetInitialState()

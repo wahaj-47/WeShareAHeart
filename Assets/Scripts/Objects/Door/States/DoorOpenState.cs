@@ -8,8 +8,8 @@ public class DoorOpenState : BaseState
 
     public override void EnterState()
     {
-        Debug.Log("Open door");
         ((DoorStateManager)manager).animator.SetBool("Open", true);
+        ((DoorStateManager)manager).gameObject.layer = LayerMask.NameToLayer("Default");
         ((DoorStateManager)manager).box.isTrigger = true;
     }
 }

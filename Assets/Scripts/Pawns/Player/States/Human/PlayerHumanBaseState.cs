@@ -13,33 +13,14 @@ public class PlayerHumanBaseState : PlayerBaseState
         ((PlayerStateManager)manager).rb.gravityScale = 9.8f;
         ((PlayerStateManager)manager).gameObject.layer = LayerMask.NameToLayer("Human");
         ((PlayerStateManager)manager).animator.SetBool("hasHeart", true);
-    }
-
-    public override void OnTriggerEnter2D(Collider2D other)
-    {
-        IInteractable interactable = other.GetComponent<IInteractable>();
-
-        if(interactable != null)
-        {
-            ((PlayerStateManager)manager).interactable = interactable;
-            ((PlayerStateManager)manager).SwitchState(((PlayerStateManager)manager).HumanInteractState);
-        }
-    }
-
-    public override void OnTriggerExit2D(Collider2D other)
-    {
-        if (((PlayerStateManager)manager).interactable != null)
-        {
-            ((PlayerStateManager)manager).interactable = null;
-            ((PlayerStateManager)manager).SwitchState(((PlayerStateManager)manager).HumanRoamState);
-        }
+        ((PlayerStateManager)manager).capsule.isTrigger = false;
     }
 
     protected void Fire(Vector3 throwDirection)
     {
 
-        // Switch to roaming
-        ((PlayerStateManager)manager).SwitchState(((PlayerStateManager)manager).GhostState);
+        // Switch to ghost
+        ((PlayerStateManager)manager).SwitchState(((PlayerStateManager)manager).GhostRoamState);
 
         // Spawn the heart prefab
         GameObject heart = GameObject.Instantiate(((PlayerStateManager)manager).HeartPrefab, ((PlayerStateManager)manager).ThrowPoint.transform.position, Quaternion.identity);

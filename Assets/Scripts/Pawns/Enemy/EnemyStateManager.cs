@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStateManager : BaseStateManager
+public class EnemyStateManager : BaseStateManager, IInteractable
 {
     public Rigidbody2D rb;
     public Animator animator;
@@ -13,10 +13,14 @@ public class EnemyStateManager : BaseStateManager
     [HideInInspector]
     public Transform target;
 
+    [HideInInspector]
+    public PlayerStateManager controller;
+
     public BaseState EnemyGuardState;
     public BaseState EnemyChargeState;
     public BaseState EnemyAttackState;
     public BaseState EnemyDevourState;
+    public BaseState EnemyPossessedState;
 
     void Awake()
     {
@@ -24,6 +28,7 @@ public class EnemyStateManager : BaseStateManager
         EnemyChargeState = new EnemyChargeState(this);
         EnemyAttackState = new EnemyAttackState(this);
         EnemyDevourState = new EnemyDevourState(this);
+        EnemyPossessedState = new EnemyPossessedState(this);
     }
 
     public override void Start()
@@ -34,6 +39,12 @@ public class EnemyStateManager : BaseStateManager
     public override BaseState GetInitialState()
     {
         return EnemyGuardState;
+    }
+
+    public void Interact(PlayerStateManager interactor)
+    {
+        controller = interactor;
+        this.SwitchState(this.EnemyPossessedState);
     }
 
 }

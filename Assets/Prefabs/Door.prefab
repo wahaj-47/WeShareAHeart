@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2146650780054439773}
   - component: {fileID: 3340638356517716984}
   - component: {fileID: 6646128472151574556}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 568660716302909001}
   - component: {fileID: 568660716302909000}
   - component: {fileID: 568660716302909007}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,7 +191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 953114297120798838}
   - component: {fileID: 8458768042020046826}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +275,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3777915788885568667}
   - component: {fileID: 3680828603281792993}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}

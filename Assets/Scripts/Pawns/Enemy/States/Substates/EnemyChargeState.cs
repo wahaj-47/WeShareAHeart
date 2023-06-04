@@ -6,6 +6,7 @@ public class EnemyChargeState : EnemyBaseState
 {
     private Vector2 direction;
     private float moveSpeed = 3f;
+
     public EnemyChargeState(EnemyStateManager manager) : base(manager) { }
 
     public override void EnterState()
@@ -19,7 +20,7 @@ public class EnemyChargeState : EnemyBaseState
 
         if (!CanSee("Human") && !CanSee("Heart"))
         {
-            ((EnemyStateManager)manager).SwitchState(((EnemyStateManager)manager).EnemyGuardState);   
+            ((EnemyStateManager)manager).SwitchState(((EnemyStateManager)manager).EnemyGuardState);
         }
 
         if (((EnemyStateManager)manager).target)

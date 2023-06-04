@@ -16,6 +16,7 @@ public class PlayerStateManager : BaseStateManager
     public GameObject HeartPrefab;
     public GameObject PointPrefab;
     public GameObject ThrowPoint;
+    public CapsuleCollider2D capsule;
 
     public int numberOfPoints = 10;
     public GameObject[] Points;
@@ -23,8 +24,8 @@ public class PlayerStateManager : BaseStateManager
     public BaseState HumanRoamState;
     public BaseState HumanAimState;
     public BaseState HumanAttackedState;
-    public BaseState HumanInteractState;
-    public BaseState GhostState;
+    public BaseState GhostRoamState;
+    public BaseState GhostMasterState;
 
     public IInteractable interactable;
 
@@ -32,9 +33,9 @@ public class PlayerStateManager : BaseStateManager
     {
         HumanRoamState = new PlayerHumanRoamState(this);
         HumanAimState = new PlayerHumanAimState(this);
-        GhostState = new PlayerGhostState(this);
         HumanAttackedState = new PlayerHumanAttackedState(this);
-        HumanInteractState = new PlayerHumanInteractState(this);
+        GhostRoamState = new PlayerGhostRoamState(this);
+        GhostMasterState = new PlayerGhostMasterState(this);
     }
 
     // Start is called before the first frame update
@@ -56,7 +57,7 @@ public class PlayerStateManager : BaseStateManager
         if (playerId == 1)
             return HumanRoamState;
         else
-            return GhostState;
+            return GhostRoamState;
     }
 
 }

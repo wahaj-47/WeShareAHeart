@@ -9,6 +9,7 @@ public class DoorClosedState : BaseState
     public override void EnterState()
     {
         ((DoorStateManager)manager).animator.SetBool("Open", false);
+        ((DoorStateManager)manager).gameObject.layer = LayerMask.NameToLayer("Object");
         ((DoorStateManager)manager).box.isTrigger = false;
     }
 

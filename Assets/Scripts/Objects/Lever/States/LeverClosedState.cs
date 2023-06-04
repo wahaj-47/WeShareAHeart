@@ -12,7 +12,7 @@ public class LeverClosedState : BaseState, IInteractable
         ((LeverStateManager)manager).door.SwitchState(((LeverStateManager)manager).door.DoorClosedState);
     }
 
-    public void Interact()
+    public void Interact(PlayerStateManager interactor)
     {
         ((LeverStateManager)manager).SwitchState(((LeverStateManager)manager).LeverOpenState);
     }
