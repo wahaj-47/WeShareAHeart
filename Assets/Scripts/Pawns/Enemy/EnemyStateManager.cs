@@ -6,7 +6,7 @@ public class EnemyStateManager : BaseStateManager, IInteractable
 {
     public Rigidbody2D rb;
     public Animator animator;
-
+    public SpriteRenderer sprite;
     public GameObject heart;
     public GameObject blood;
 

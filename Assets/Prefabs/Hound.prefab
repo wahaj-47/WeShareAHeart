@@ -146,6 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 4032780699745055784}
   animator: {fileID: 7907272390010002797}
+  sprite: {fileID: 4206993465128348121}
   heart: {fileID: 4024562313390623899}
   blood: {fileID: 6376868146186917681}
   target: {fileID: 0}

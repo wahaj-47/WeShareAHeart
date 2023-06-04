@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class EnemyPossessedState : BaseState
 {
@@ -11,7 +12,9 @@ public class EnemyPossessedState : BaseState
 
     public override void EnterState()
     {
+        DOTween.To(() => ((EnemyStateManager)manager).sprite.color, x => ((EnemyStateManager)manager).sprite.color = x, new Color(255, 255, 0, 1), 0.5f);
         ((EnemyStateManager)manager).controller.SwitchState(((EnemyStateManager)manager).controller.GhostMasterState);
+        ((EnemyStateManager)manager).gameObject.layer = LayerMask.NameToLayer("Ignore Player");
     }
 
     public override void UpdateState()

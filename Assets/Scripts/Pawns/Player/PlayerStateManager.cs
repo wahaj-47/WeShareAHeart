@@ -5,18 +5,19 @@ using UnityEngine;
 public class PlayerStateManager : BaseStateManager
 {
     public int playerId = 1;
-    public Rigidbody2D rb;
-    public Animator animator;
 
     public float range = 3f;
     public float minIncline = 0f;
     public float maxIncline = 7f;
     public float aimSpeed = 5f;
 
+    public Rigidbody2D rb;
+    public Animator animator;
     public GameObject HeartPrefab;
     public GameObject PointPrefab;
     public GameObject ThrowPoint;
     public CapsuleCollider2D capsule;
+    public SpriteRenderer sprite;
 
     public int numberOfPoints = 10;
     public GameObject[] Points;

@@ -123,16 +123,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerId: 1
-  rb: {fileID: 6648930984035363040}
-  animator: {fileID: -8385751418628480912}
   range: 5
   minIncline: 0
   maxIncline: 7
   aimSpeed: 5
+  rb: {fileID: 6648930984035363040}
+  animator: {fileID: -8385751418628480912}
   HeartPrefab: {fileID: 551375177411589821, guid: fe09b47af3dcf2d44975d60ae7de639b, type: 3}
   PointPrefab: {fileID: 551375177411589821, guid: 8360f64b7e0d97c4fa21515dab3a4843, type: 3}
   ThrowPoint: {fileID: 8360100137364600030}
   capsule: {fileID: 4370006226376578736}
+  sprite: {fileID: 7091982613227915851}
   numberOfPoints: 10
   Points: []
 --- !u!95 &-8385751418628480912
