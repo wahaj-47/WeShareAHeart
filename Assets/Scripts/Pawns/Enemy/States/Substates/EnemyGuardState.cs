@@ -17,6 +17,7 @@ public class EnemyGuardState : EnemyBaseState
     {
         if (CanSee("Human") || CanSee("Heart"))
         {
+            ((EnemyStateManager)manager).StopCoroutine("DoCoroutine");
             ((EnemyStateManager)manager).SwitchState(((EnemyStateManager)manager).EnemyChargeState);
         }
     }

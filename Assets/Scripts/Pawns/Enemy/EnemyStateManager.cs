@@ -7,8 +7,11 @@ public class EnemyStateManager : BaseStateManager, IInteractable
     public Rigidbody2D rb;
     public Animator animator;
     public SpriteRenderer sprite;
+    public BoxCollider2D box;
     public GameObject heart;
     public GameObject blood;
+
+    public bool Patrol;
 
     [HideInInspector]
     public Transform target;
@@ -17,6 +20,7 @@ public class EnemyStateManager : BaseStateManager, IInteractable
     public PlayerStateManager controller;
 
     public BaseState EnemyGuardState;
+    public BaseState EnemyPatrolState;
     public BaseState EnemyChargeState;
     public BaseState EnemyAttackState;
     public BaseState EnemyDevourState;
@@ -25,10 +29,13 @@ public class EnemyStateManager : BaseStateManager, IInteractable
     void Awake()
     {
         EnemyGuardState = new EnemyGuardState(this);
+        EnemyPatrolState = new EnemyPatrolState(this);
         EnemyChargeState = new EnemyChargeState(this);
         EnemyAttackState = new EnemyAttackState(this);
         EnemyDevourState = new EnemyDevourState(this);
         EnemyPossessedState = new EnemyPossessedState(this);
+
+        box = GetComponent<BoxCollider2D>();
     }
 
     public override void Start()
@@ -38,7 +45,10 @@ public class EnemyStateManager : BaseStateManager, IInteractable
 
     public override BaseState GetInitialState()
     {
-        return EnemyGuardState;
+        if (Patrol)
+            return EnemyPatrolState;
+        else
+            return EnemyGuardState;
     }
 
     public void Interact(PlayerStateManager interactor)

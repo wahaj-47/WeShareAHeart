@@ -44,11 +44,11 @@ public class EnemyChargeState : EnemyBaseState
 
     public override void UpdateState()
     {
-        if (direction.x > 0)
+        if (direction.x < 0)
         {
             ((EnemyStateManager)manager).transform.rotation = Quaternion.Euler(new Vector3(0f, 180f, 0f));
         }
-        else if (direction.x < 0)
+        else if (direction.x > 0)
         {
             ((EnemyStateManager)manager).transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
         }
