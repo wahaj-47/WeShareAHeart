@@ -9,11 +9,14 @@ public class LeverClosedState : BaseState, IInteractable
     public override void EnterState()
     {
         ((LeverStateManager)manager).animator.SetBool("Open", false);
-        ((LeverStateManager)manager).door.SwitchState(((LeverStateManager)manager).door.DoorClosedState);
+        ((LeverStateManager)manager).target.SwitchState(((LeverStateManager)manager).target.TargetClosedState);
     }
 
     public void Interact(PlayerStateManager interactor)
     {
-        ((LeverStateManager)manager).SwitchState(((LeverStateManager)manager).LeverOpenState);
+        if(((LeverStateManager)manager).elastic)
+            ((LeverStateManager)manager).SwitchState(((LeverStateManager)manager).LeverOpenHeldState);
+        else
+            ((LeverStateManager)manager).SwitchState(((LeverStateManager)manager).LeverOpenState);
     }
 }

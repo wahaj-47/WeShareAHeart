@@ -11,6 +11,10 @@ public class EnemyGuardState : EnemyBaseState
     {
         ((EnemyStateManager)manager).animator.SetFloat("Velocity", 0.0f);
         ((EnemyStateManager)manager).target = null;
+        if (((EnemyStateManager)manager).Patrol)
+        {
+            ((EnemyStateManager)manager).StartCoroutine("DoCoroutine", this.StartPatrol());
+        }
     }
 
     public override void UpdateState()
@@ -20,6 +24,12 @@ public class EnemyGuardState : EnemyBaseState
             ((EnemyStateManager)manager).StopCoroutine("DoCoroutine");
             ((EnemyStateManager)manager).SwitchState(((EnemyStateManager)manager).EnemyChargeState);
         }
+    }
+
+    IEnumerator StartPatrol()
+    {
+        yield return new WaitForSeconds(2f);
+        ((EnemyStateManager)manager).SwitchState(((EnemyStateManager)manager).EnemyPatrolState);
     }
 
 }

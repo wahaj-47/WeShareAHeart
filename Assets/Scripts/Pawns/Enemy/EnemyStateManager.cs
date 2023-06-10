@@ -45,10 +45,7 @@ public class EnemyStateManager : BaseStateManager, IInteractable
 
     public override BaseState GetInitialState()
     {
-        if (Patrol)
-            return EnemyPatrolState;
-        else
-            return EnemyGuardState;
+        return EnemyGuardState;
     }
 
     public void Interact(PlayerStateManager interactor)

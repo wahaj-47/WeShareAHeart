@@ -9,7 +9,7 @@ public class LeverOpenState : BaseState, IInteractable
     public override void EnterState()
     {
         ((LeverStateManager)manager).animator.SetBool("Open", true);
-        ((LeverStateManager)manager).door.SwitchState(((LeverStateManager)manager).door.DoorOpenState);
+        ((LeverStateManager)manager).target.SwitchState(((LeverStateManager)manager).target.TargetOpenState);
     }
 
     public void Interact(PlayerStateManager interactor)

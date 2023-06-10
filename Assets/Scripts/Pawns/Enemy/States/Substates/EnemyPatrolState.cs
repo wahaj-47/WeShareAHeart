@@ -15,6 +15,7 @@ public class EnemyPatrolState : EnemyBaseState
 
     public override void UpdateState()
     {
+
         if (CanSee("Human") || CanSee("Heart"))
         {
             ((EnemyStateManager)manager).StopCoroutine("DoCoroutine");
@@ -33,16 +34,9 @@ public class EnemyPatrolState : EnemyBaseState
         {
             ((EnemyStateManager)manager).transform.RotateAround(((EnemyStateManager)manager).transform.position, ((EnemyStateManager)manager).transform.up, 180);
 
-            ((EnemyStateManager)manager).StartCoroutine("DoCoroutine", this.Patrol());
-
             ((EnemyStateManager)manager).SwitchState(((EnemyStateManager)manager).EnemyGuardState);
         }
 
     }
 
-    IEnumerator Patrol()
-    {
-        yield return new WaitForSeconds(2f);
-        ((EnemyStateManager)manager).SwitchState(((EnemyStateManager)manager).EnemyPatrolState);
-    }
 }

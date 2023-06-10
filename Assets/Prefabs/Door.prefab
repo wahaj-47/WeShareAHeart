@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2146650780054439773}
   - component: {fileID: 3340638356517716984}
-  - component: {fileID: 6646128472151574556}
+  - component: {fileID: 3320414437111031430}
   m_Layer: 6
   m_Name: Door
   m_TagString: Object
@@ -62,7 +62,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.27342677, y: 1.4057508}
   m_EdgeRadius: 0
---- !u!114 &6646128472151574556
+--- !u!114 &3320414437111031430
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,11 +71,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 490954916858955793}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fc0a94fd7cf86a408b643cc0f2a053d, type: 3}
+  m_Script: {fileID: 11500000, guid: 82c9807af294d5e45a6ffca77b59c8b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 568660716302909007}
-  box: {fileID: 3340638356517716984}
+  animators:
+  - {fileID: 568660716302909007}
+  blockingColliders:
+  - {fileID: 3340638356517716984}
+  helpingColliders: []
 --- !u!1 &568660716302909006
 GameObject:
   m_ObjectHideFlags: 0
