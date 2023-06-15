@@ -8,7 +8,7 @@ public class PlayerHumanAttackedState : PlayerHumanBaseState
 
     public override void EnterState()
     {
-        Vector3 throwDirection = ((PlayerStateManager)manager).transform.right * ((PlayerStateManager)manager).range / 2;
+        Vector3 throwDirection = ((PlayerStateManager)manager).transform.up * 5;
         base.Fire(throwDirection);
     }
 
