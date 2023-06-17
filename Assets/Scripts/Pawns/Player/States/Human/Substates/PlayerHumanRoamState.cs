@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening;
 
 public class PlayerHumanRoamState : PlayerHumanBaseState
 {
@@ -23,6 +24,27 @@ public class PlayerHumanRoamState : PlayerHumanBaseState
             }
         }
 
+        if(movement.x != 0)
+        {
+            float dot = CheckSlope();
+
+            if (dot < 0) DOTween.To(() => ((PlayerStateManager)manager).moveSpeed, x => ((PlayerStateManager)manager).moveSpeed = x, 100f, 0.05f);
+            else if (dot > 0) DOTween.To(() => ((PlayerStateManager)manager).moveSpeed, x => ((PlayerStateManager)manager).moveSpeed = x, 15f, 0.05f);
+            else DOTween.To(() => ((PlayerStateManager)manager).moveSpeed, x => ((PlayerStateManager)manager).moveSpeed = x, 30f, 0.1f);
+        }
+        else ((PlayerStateManager)manager).moveSpeed = 30f;
+    }
+
+    private float CheckSlope()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(((PlayerStateManager)manager).GroundCheck.transform.position, -((PlayerStateManager)manager).GroundCheck.transform.up, 5f, LayerMask.GetMask("Ground"));
+
+        if (hit.collider != null)
+        {
+            return Vector3.Dot(hit.normal, ((PlayerStateManager)manager).transform.right);
+        }
+
+        return 0f;
     }
 
 }

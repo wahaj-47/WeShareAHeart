@@ -17,6 +17,7 @@ public class PlayerGhostRoamState : PlayerBaseState
         ((PlayerStateManager)manager).gameObject.layer = LayerMask.NameToLayer("Ghost");
         ((PlayerStateManager)manager).animator.SetBool("hasHeart", false);
         ((PlayerStateManager)manager).capsule.isTrigger = true;
+        ((PlayerStateManager)manager).moveSpeed = 25f;
     }
 
     public override void UpdateState()

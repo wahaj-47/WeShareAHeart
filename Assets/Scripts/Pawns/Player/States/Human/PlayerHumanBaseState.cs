@@ -14,9 +14,10 @@ public class PlayerHumanBaseState : PlayerBaseState
         ((PlayerStateManager)manager).gameObject.layer = LayerMask.NameToLayer("Human");
         ((PlayerStateManager)manager).animator.SetBool("hasHeart", true);
         ((PlayerStateManager)manager).capsule.isTrigger = false;
+        ((PlayerStateManager)manager).moveSpeed = 25f;
     }
 
-    protected void Fire(Vector3 throwDirection)
+protected void Fire(Vector3 throwDirection)
     {
 
         // Switch to ghost

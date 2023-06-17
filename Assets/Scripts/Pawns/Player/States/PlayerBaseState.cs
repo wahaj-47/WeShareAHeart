@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class PlayerBaseState : BaseState
 {
-    public Vector2 movement;
-    private float moveSpeed = 3f;
+    public Vector2 movement = new Vector2(0,0);
+    private Vector3 m_Velocity = Vector3.zero;
+    private float m_MovementSmoothing = 0.05f;
 
     public PlayerBaseState(PlayerStateManager manager) : base(manager){}
 
@@ -23,7 +24,8 @@ public class PlayerBaseState : BaseState
 
     public override void FixedUpdateState()
     {
-        ((PlayerStateManager)manager).rb.MovePosition(((PlayerStateManager)manager).rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        Vector3 targetVelocity = movement * ((PlayerStateManager)manager).moveSpeed * Time.fixedDeltaTime * 10f;
+        ((PlayerStateManager)manager).rb.velocity = Vector3.SmoothDamp(((PlayerStateManager)manager).rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
     }
 
     public override void OnTriggerEnter2D(Collider2D other)

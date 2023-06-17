@@ -10,12 +10,14 @@ public class PlayerStateManager : BaseStateManager
     public float minIncline = 0f;
     public float maxIncline = 7f;
     public float aimSpeed = 5f;
+    public float moveSpeed = 40f;
 
     public Rigidbody2D rb;
     public Animator animator;
     public GameObject HeartPrefab;
     public GameObject PointPrefab;
     public GameObject ThrowPoint;
+    public GameObject GroundCheck;
     public CapsuleCollider2D capsule;
     public SpriteRenderer sprite;
 
