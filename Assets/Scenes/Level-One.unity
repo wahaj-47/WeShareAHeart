@@ -276,9 +276,9 @@ GameObject:
   - component: {fileID: 723919772}
   - component: {fileID: 723919771}
   - component: {fileID: 723919773}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Tilemap-Base
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -340,7 +340,7 @@ TilemapRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.016129017, y: 0.016129017, z: 0}
+  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -11582,11 +11582,11 @@ TilemapCollider2D:
   m_GameObject: {fileID: 723919769}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 5ca39c04e1573394c89322eaa9e8300e, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.12}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
 --- !u!1001 &1127549062
@@ -11663,11 +11663,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6648930984035363042, guid: a128d4eed15252947bdfb4ecb541ce57, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.61
+      value: -3.333
       objectReference: {fileID: 0}
     - target: {fileID: 6648930984035363042, guid: a128d4eed15252947bdfb4ecb541ce57, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.07
+      value: -2.141
       objectReference: {fileID: 0}
     - target: {fileID: 6648930984035363042, guid: a128d4eed15252947bdfb4ecb541ce57, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11935,7 +11935,7 @@ Camera:
   far clip plane: 1000
   field of view: 49.629505
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

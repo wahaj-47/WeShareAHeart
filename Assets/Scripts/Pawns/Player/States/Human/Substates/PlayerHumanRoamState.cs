@@ -30,7 +30,7 @@ public class PlayerHumanRoamState : PlayerHumanBaseState
 
             if (dot < 0) DOTween.To(() => ((PlayerStateManager)manager).moveSpeed, x => ((PlayerStateManager)manager).moveSpeed = x, 100f, 0.05f);
             else if (dot > 0) DOTween.To(() => ((PlayerStateManager)manager).moveSpeed, x => ((PlayerStateManager)manager).moveSpeed = x, 15f, 0.05f);
-            else DOTween.To(() => ((PlayerStateManager)manager).moveSpeed, x => ((PlayerStateManager)manager).moveSpeed = x, 30f, 0.1f);
+            else DOTween.To(() => ((PlayerStateManager)manager).moveSpeed, x => ((PlayerStateManager)manager).moveSpeed = x, 30f, 0.12f);
         }
         else ((PlayerStateManager)manager).moveSpeed = 30f;
     }
