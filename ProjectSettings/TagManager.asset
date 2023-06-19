@@ -9,6 +9,7 @@ TagManager:
   - Human
   - Object
   - Compound
+  - Enemy
   layers:
   - Default
   - TransparentFX

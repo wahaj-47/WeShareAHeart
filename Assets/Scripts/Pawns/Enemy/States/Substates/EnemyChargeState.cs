@@ -5,7 +5,9 @@ using UnityEngine;
 public class EnemyChargeState : EnemyBaseState
 {
     private Vector2 direction;
-    private float moveSpeed = 3f;
+    private float moveSpeed = 25f;
+    private Vector3 m_Velocity = Vector3.zero;
+    private float m_MovementSmoothing = 0.05f;
 
     public EnemyChargeState(EnemyStateManager manager) : base(manager) { }
 
@@ -39,7 +41,12 @@ public class EnemyChargeState : EnemyBaseState
         }
 
         // Move towards the target
-        ((EnemyStateManager)manager).rb.MovePosition(((EnemyStateManager)manager).rb.position + direction * moveSpeed * Time.fixedDeltaTime);
+        if (((EnemyStateManager)manager).utils.IsGrounded())
+        {
+            Vector3 targetVelocity = direction * moveSpeed * Time.fixedDeltaTime * 10f;
+            ((EnemyStateManager)manager).rb.velocity = Vector3.SmoothDamp(((EnemyStateManager)manager).rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+        }
+        
     }
 
     public override void UpdateState()

@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2118162863331268602
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 516394971295663949}
+  m_Layer: 7
+  m_Name: SlopeCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &516394971295663949
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118162863331268602}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.15, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7366706285653077893}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3453479614313626426
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6241629930942047497}
+  m_Layer: 7
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6241629930942047497
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3453479614313626426}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.15, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7366706285653077893}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3963915277633230913
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,11 +76,12 @@ GameObject:
   - component: {fileID: 4032780699745055784}
   - component: {fileID: 3100681845982537905}
   - component: {fileID: 6804787529881846380}
-  - component: {fileID: 2493471310520143058}
+  - component: {fileID: 2961639118946851867}
+  - component: {fileID: 6306492580440678609}
   - component: {fileID: 5086003325473862160}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Hound
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,6 +99,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7765434802628529218}
+  - {fileID: 6241629930942047497}
+  - {fileID: 516394971295663949}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -126,7 +191,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 9.8
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -162,14 +227,28 @@ MonoBehaviour:
   rb: {fileID: 4032780699745055784}
   animator: {fileID: 7907272390010002797}
   sprite: {fileID: 4206993465128348121}
-  box: {fileID: 2493471310520143058}
   heart: {fileID: 4024562313390623899}
-  blood: {fileID: 8564918244439432843, guid: 70627d15b9bace143b839dc2035a8f08, type: 3}
   Patrol: 0
   target: {fileID: 0}
+  box: {fileID: 0}
   controller: {fileID: 0}
---- !u!61 &2493471310520143058
-BoxCollider2D:
+  utils: {fileID: 0}
+--- !u!114 &2961639118946851867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3963915277633230913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7edb1b5693ee1b84083428e41ec45d80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GroundCheck: {fileID: 3453479614313626426}
+  SlopeCheck: {fileID: 2118162863331268602}
+--- !u!70 &6306492580440678609
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -182,18 +261,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.59375, y: 0.375}
-    newSize: {x: 0.38, y: 0.24}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
   m_Size: {x: 0.59375, y: 0.375}
-  m_EdgeRadius: 0
+  m_Direction: 1
 --- !u!61 &5086003325473862160
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -232,8 +301,16 @@ PrefabInstance:
       value: Heart
       objectReference: {fileID: 0}
     - target: {fileID: 551375177411589821, guid: fe09b47af3dcf2d44975d60ae7de639b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 551375177411589821, guid: fe09b47af3dcf2d44975d60ae7de639b, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2959457008651832435, guid: fe09b47af3dcf2d44975d60ae7de639b, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4626956264030234256, guid: fe09b47af3dcf2d44975d60ae7de639b, type: 3}
       propertyPath: m_FlipX
@@ -246,6 +323,10 @@ PrefabInstance:
     - target: {fileID: 4626956264030234256, guid: fe09b47af3dcf2d44975d60ae7de639b, type: 3}
       propertyPath: m_SortingOrder
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6555964016197590707, guid: fe09b47af3dcf2d44975d60ae7de639b, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6609211793563088484, guid: fe09b47af3dcf2d44975d60ae7de639b, type: 3}
       propertyPath: m_RootOrder

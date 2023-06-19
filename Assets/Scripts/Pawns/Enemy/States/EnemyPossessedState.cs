@@ -5,10 +5,13 @@ using DG.Tweening;
 
 public class EnemyPossessedState : BaseState
 {
-    private int time = 1;
+    private float time = 0.5f;
     private Vector2 movement;
-    private float moveSpeed = 3f;
+    private float moveSpeed = 25f;
     private IInteractable interactable;
+
+    private Vector3 m_Velocity = Vector3.zero;
+    private float m_MovementSmoothing = 0.05f;
 
     public EnemyPossessedState(EnemyStateManager manager) : base(manager) { }
 
@@ -63,7 +66,22 @@ public class EnemyPossessedState : BaseState
 
     public override void FixedUpdateState()
     {
-        ((EnemyStateManager)manager).rb.MovePosition(((EnemyStateManager)manager).rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        if (((EnemyStateManager)manager).utils.IsGrounded())
+        {
+            if (movement.x != 0)
+            {
+                float dot = ((EnemyStateManager)manager).utils.CheckSlope();
+
+                if (dot < 0) DOTween.To(() => moveSpeed, x => moveSpeed = x, 100f, 0.05f);
+                else if (dot > 0) DOTween.To(() => moveSpeed, x => moveSpeed = x, 15f, 0.05f);
+                else DOTween.To(() => moveSpeed, x => moveSpeed = x, 30f, 0.12f);
+            }
+            else moveSpeed = 30f;
+        }
+        else moveSpeed = 0f;
+
+        Vector3 targetVelocity = movement * moveSpeed * Time.fixedDeltaTime * 10f;
+        ((EnemyStateManager)manager).rb.velocity = Vector3.SmoothDamp(((EnemyStateManager)manager).rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
     }
 
     public override void OnTriggerEnter2D(Collider2D other)

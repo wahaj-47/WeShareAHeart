@@ -25,7 +25,7 @@ public class EnemyBaseState : BaseState
 
     protected bool CanSee(string tag)
     {
-        RaycastHit2D hit = Physics2D.BoxCast(((EnemyStateManager)manager).transform.position, ((EnemyStateManager)manager).box.size, 0, ((EnemyStateManager)manager).transform.right, 5, ~LayerMask.GetMask("Default", "Ghost", "Enemy"));
+        RaycastHit2D hit = Physics2D.BoxCast(((EnemyStateManager)manager).transform.position, ((EnemyStateManager)manager).box.size, 0, ((EnemyStateManager)manager).transform.right, 5, ~LayerMask.GetMask("Ghost", "Enemy", "Ground"));
 
         if (hit.collider != null)
         {

@@ -13,8 +13,15 @@ public class Hurt : MonoBehaviour
                 PlayerStateManager manager = other.collider.gameObject.GetComponent<PlayerStateManager>();
                 manager.SwitchState(manager.HumanAttackedState);
             }
+            
             else
             {
+                if (other.collider.tag == "Enemy")
+                {
+                    EnemyStateManager manager = other.collider.gameObject.GetComponent<EnemyStateManager>();
+                    manager.controller.SwitchState(manager.controller.GhostRoamState);
+                }
+
                 Destroy(other.gameObject);
 
                 Vector2 point = other.GetContact(0).point;
@@ -23,6 +30,8 @@ public class Hurt : MonoBehaviour
                 Sprite sprite = other.gameObject.GetComponent<SpriteRenderer>().sprite;
 
                 GameObject victim = new GameObject();
+                victim.transform.rotation = other.transform.rotation;
+
                 SpriteRenderer victimRenderer = victim.AddComponent(typeof(SpriteRenderer)) as SpriteRenderer;
                 Fade fadeScript = victim.AddComponent(typeof(Fade)) as Fade;
             

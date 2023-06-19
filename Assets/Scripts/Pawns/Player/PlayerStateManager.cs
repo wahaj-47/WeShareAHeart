@@ -17,7 +17,6 @@ public class PlayerStateManager : BaseStateManager
     public GameObject HeartPrefab;
     public GameObject PointPrefab;
     public GameObject ThrowPoint;
-    public GameObject GroundCheck;
     public CapsuleCollider2D capsule;
     public SpriteRenderer sprite;
 
@@ -31,6 +30,7 @@ public class PlayerStateManager : BaseStateManager
     public BaseState GhostMasterState;
 
     public IInteractable interactable;
+    [HideInInspector] public MovementUtils utils;
 
     void Awake()
     {
@@ -39,6 +39,8 @@ public class PlayerStateManager : BaseStateManager
         HumanAttackedState = new PlayerHumanAttackedState(this);
         GhostRoamState = new PlayerGhostRoamState(this);
         GhostMasterState = new PlayerGhostMasterState(this);
+
+        utils = GetComponent<MovementUtils>();
     }
 
     // Start is called before the first frame update
