@@ -23,6 +23,9 @@ public class EnemyStateManager : BaseStateManager, IInteractable
     [HideInInspector] 
     public MovementUtils utils;
 
+    [field: SerializeField]
+    public GameObject UI { get; set; }
+
     public BaseState EnemyGuardState;
     public BaseState EnemyPatrolState;
     public BaseState EnemyChargeState;
@@ -55,8 +58,20 @@ public class EnemyStateManager : BaseStateManager, IInteractable
 
     public void Interact(PlayerStateManager interactor)
     {
-        controller = interactor;
-        this.SwitchState(this.EnemyPossessedState);
+        IInteractable interactiveState = currentState as IInteractable;
+
+        if(interactiveState != null)
+            interactiveState.Interact(interactor);
+    }
+
+    public void DisplayPrompt(int playerId)
+    {
+        IInteractable interactiveState = currentState as IInteractable;
+
+        if(interactiveState != null)
+        {
+            interactiveState.DisplayPrompt(playerId);
+        }
     }
 
 }

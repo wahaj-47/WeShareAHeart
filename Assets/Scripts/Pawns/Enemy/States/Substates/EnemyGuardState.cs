@@ -9,6 +9,7 @@ public class EnemyGuardState : EnemyBaseState
 
     public override void EnterState()
     {
+        base.EnterState();
 
         ((EnemyStateManager)manager).animator.SetFloat("Velocity", 0.0f);
         ((EnemyStateManager)manager).target = null;

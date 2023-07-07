@@ -19,7 +19,8 @@ public class Hurt : MonoBehaviour
                 if (other.collider.tag == "Enemy")
                 {
                     EnemyStateManager manager = other.collider.gameObject.GetComponent<EnemyStateManager>();
-                    manager.controller.SwitchState(manager.controller.GhostRoamState);
+                    if(manager.controller != null)
+                        manager.controller.SwitchState(manager.controller.GhostRoamState);
                 }
 
                 Destroy(other.gameObject);

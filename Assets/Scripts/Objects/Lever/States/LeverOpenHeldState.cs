@@ -9,13 +9,17 @@ public class LeverOpenHeldState : BaseState
     public override void EnterState()
     {
         ((LeverStateManager)manager).animator.SetBool("Open", true);
-        ((LeverStateManager)manager).target.SwitchState(((LeverStateManager)manager).target.TargetOpenState);
     }
 
     public override void UpdateState()
     {
         if(!Input.GetButton("Fire" + ((LeverStateManager)manager).interactor.playerId) || ((LeverStateManager)manager).interactor.interactable == null)
         {
+            foreach (TargetStateManager target in ((LeverStateManager)manager).targets)
+            {
+                target.FlipState();
+            }
+
             ((LeverStateManager)manager).SwitchState(((LeverStateManager)manager).LeverClosedState);
         }
     }

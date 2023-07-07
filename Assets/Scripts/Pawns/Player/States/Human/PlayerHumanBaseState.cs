@@ -17,7 +17,7 @@ public class PlayerHumanBaseState : PlayerBaseState
         ((PlayerStateManager)manager).moveSpeed = 25f;
     }
 
-protected void Fire(Vector3 throwDirection)
+    protected void Fire(Vector3 throwDirection)
     {
 
         // Switch to ghost
@@ -32,17 +32,22 @@ protected void Fire(Vector3 throwDirection)
         Rigidbody2D heartRb = heart.GetComponent<Rigidbody2D>();
         heartRb.AddForce(throwDirection, ForceMode2D.Impulse);
 
-        // Hide the trajectory
-        for (int i = 0; i < ((PlayerStateManager)manager).Points.Length; i++)
-        {
-            ((PlayerStateManager)manager).Points[i].SetActive(false);
-        }
+        HideTrajectory();
 
         // Play throwing animation
         ((PlayerStateManager)manager).animator.SetBool("throwing", true);
 
         ((PlayerStateManager)manager).animator.SetBool("turningHuman", false);
 
+    }
+
+    protected void HideTrajectory()
+    {
+        // Hide the trajectory
+        for (int i = 0; i < ((PlayerStateManager)manager).Points.Length; i++)
+        {
+            ((PlayerStateManager)manager).Points[i].SetActive(false);
+        }
     }
 
 }

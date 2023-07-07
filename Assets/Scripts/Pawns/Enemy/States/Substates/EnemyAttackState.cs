@@ -9,6 +9,8 @@ public class EnemyAttackState : EnemyBaseState
 
     public override void EnterState()
     {
+        base.EnterState();
+
         ((EnemyStateManager)manager).animator.SetTrigger("Jump");
         ((EnemyStateManager)manager).animator.SetFloat("Velocity", 0);
         Vector2 direction = ((EnemyStateManager)manager).transform.right;

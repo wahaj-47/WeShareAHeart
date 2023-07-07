@@ -35,6 +35,7 @@ public class PlayerBaseState : BaseState
         if (interactable != null)
         {
             ((PlayerStateManager)manager).interactable = interactable;
+            ((PlayerStateManager)manager).interactable.DisplayPrompt(((PlayerStateManager)manager).playerId);
         }
     }
 
@@ -42,6 +43,7 @@ public class PlayerBaseState : BaseState
     {
         if (((PlayerStateManager)manager).interactable != null)
         {
+            ((PlayerStateManager)manager).interactable.HidePrompt();
             ((PlayerStateManager)manager).interactable = null;
         }
     }

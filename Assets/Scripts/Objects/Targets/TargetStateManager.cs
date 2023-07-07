@@ -11,6 +11,8 @@ public class TargetStateManager : BaseStateManager
     public BaseState TargetOpenState;
     public BaseState TargetClosedState;
 
+    public State InitialState;
+
     void Awake()
     {
         TargetOpenState = new TargetOpenState(this);
@@ -19,7 +21,17 @@ public class TargetStateManager : BaseStateManager
 
     public override BaseState GetInitialState()
     {
+        if (InitialState == State.Open)
+            return TargetOpenState;
         return TargetClosedState;
+    }
+
+    public void FlipState()
+    {
+        if (currentState == TargetOpenState)
+            SwitchState(TargetClosedState);
+        else
+            SwitchState(TargetOpenState);
     }
 
 }

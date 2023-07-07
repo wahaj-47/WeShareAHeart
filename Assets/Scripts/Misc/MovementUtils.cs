@@ -11,7 +11,10 @@ public class MovementUtils : MonoBehaviour
 
         if (hit.collider != null)
         {
-            return Vector3.Dot(hit.normal, transform.right);
+            float dot = Vector3.Dot(hit.normal, transform.right);
+
+            if(dot < 0.3 || dot > -0.3)
+                return dot;
         }
 
         return 0f;
@@ -19,7 +22,7 @@ public class MovementUtils : MonoBehaviour
 
     public bool IsGrounded()
     {
-        RaycastHit2D hit = Physics2D.Raycast(GroundCheck.transform.position, -GroundCheck.transform.up, 0.5f, LayerMask.GetMask("Ground"));
+        RaycastHit2D hit = Physics2D.CircleCast(GroundCheck.transform.position, 0.5f, -GroundCheck.transform.up, 0.5f, LayerMask.GetMask("Ground"));
 
         if (hit.collider != null)
         {

@@ -6,13 +6,19 @@ public class LeverStateManager : BaseStateManager, IInteractable
 {
     public bool elastic;
     public Animator animator;
-    public TargetStateManager target;
+    public TargetStateManager[] targets;
+
     [HideInInspector]
     public PlayerStateManager interactor;
+
+    [field: SerializeField]
+    public GameObject UI { get; set; }
 
     public BaseState LeverOpenState;
     public BaseState LeverOpenHeldState;
     public BaseState LeverClosedState;
+
+    public State InitialState;
 
     void Awake()
     {
@@ -24,11 +30,19 @@ public class LeverStateManager : BaseStateManager, IInteractable
     public void Interact(PlayerStateManager interactor)
     {
         this.interactor = interactor;
+
+        foreach (TargetStateManager target in targets)
+        {
+            target.FlipState();
+        }
+
         ((IInteractable)currentState).Interact(interactor);
     }
 
     public override BaseState GetInitialState()
     {
+        if (InitialState == State.Open)
+            return LeverOpenState;
         return LeverClosedState;
     }
 

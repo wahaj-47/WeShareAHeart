@@ -20,6 +20,8 @@ public class EnemyPossessedState : BaseState
         DOTween.To(() => ((EnemyStateManager)manager).sprite.color, x => ((EnemyStateManager)manager).sprite.color = x, new Color(255, 255, 0, 1), 0.5f);
         ((EnemyStateManager)manager).controller.SwitchState(((EnemyStateManager)manager).controller.GhostMasterState);
         ((EnemyStateManager)manager).gameObject.layer = LayerMask.NameToLayer("Ignore Player");
+
+        ((IInteractable)manager).HidePrompt();
     }
 
     public override void UpdateState()
@@ -86,11 +88,13 @@ public class EnemyPossessedState : BaseState
 
     public override void OnTriggerEnter2D(Collider2D other)
     {
+
         IInteractable interactable = other.GetComponent<IInteractable>();
 
         if (interactable != null)
         {
             this.interactable = interactable;
+            this.interactable.DisplayPrompt(((EnemyStateManager)manager).controller.playerId);
         }
     }
 
@@ -98,6 +102,7 @@ public class EnemyPossessedState : BaseState
     {
         if (this.interactable != null)
         {
+            this.interactable.HidePrompt();
             this.interactable = null;
         }
     }

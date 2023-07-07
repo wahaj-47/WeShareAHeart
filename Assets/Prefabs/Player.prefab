@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3825891368930488864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.125, y: 0, z: 0}
+  m_LocalPosition: {x: 0.125, y: -0.275, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 6648930984035363042}
   - component: {fileID: 6648930984035363040}
   - component: {fileID: 7091982613227915851}
+  - component: {fileID: 4978389597509314265}
   - component: {fileID: 1384526227071673864}
   - component: {fileID: 5282695990395988389}
   - component: {fileID: -8385751418628480912}
@@ -144,6 +145,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4978389597509314265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6648930984035363047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee2920579179e084b9f9e78fa8451aff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1384526227071673864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +172,7 @@ MonoBehaviour:
   playerId: 1
   range: 5
   minIncline: 0
-  maxIncline: 7
+  maxIncline: 9
   aimSpeed: 5
   moveSpeed: 40
   rb: {fileID: 6648930984035363040}

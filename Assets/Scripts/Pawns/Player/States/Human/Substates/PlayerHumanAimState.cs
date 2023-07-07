@@ -27,7 +27,14 @@ public class PlayerHumanAimState : PlayerHumanBaseState
 
         if (Input.GetButtonDown("Fire" + ((PlayerStateManager)manager).playerId))
         {
-            base.Fire(throwDirection);
+            ((PlayerStateManager)manager).StartCoroutine("DoCoroutine", this.Throw());
+        }
+
+        if (Input.GetButtonUp("Fire" + ((PlayerStateManager)manager).playerId))
+        {
+            ((PlayerStateManager)manager).StopCoroutine("DoCoroutine");
+            base.HideTrajectory();
+            ((PlayerStateManager)manager).SwitchState(((PlayerStateManager)manager).HumanRoamState);
         }
 
     }
@@ -62,5 +69,13 @@ public class PlayerHumanAimState : PlayerHumanBaseState
         return position;
     }
 
-    
+    IEnumerator Throw()
+    {
+        yield return new WaitForSeconds(0.5f);
+        
+        base.Fire(throwDirection);
+
+    }
+
+
 }

@@ -12,7 +12,7 @@ public class PlayerHumanRoamState : PlayerHumanBaseState
 
         ((PlayerStateManager)manager).animator.SetBool("isMoving", base.movement.x != 0);
 
-        if (Input.GetButtonDown("Fire" + ((PlayerStateManager)manager).playerId))
+        if (Input.GetButtonUp("Fire" + ((PlayerStateManager)manager).playerId))
         {
             if (((PlayerStateManager)manager).interactable != null)
             {
@@ -30,11 +30,11 @@ public class PlayerHumanRoamState : PlayerHumanBaseState
             {
                 float dot = ((PlayerStateManager)manager).utils.CheckSlope();
 
-                if (dot < 0) DOTween.To(() => ((PlayerStateManager)manager).moveSpeed, x => ((PlayerStateManager)manager).moveSpeed = x, 100f, 0.05f);
+                if (dot < 0) DOTween.To(() => ((PlayerStateManager)manager).moveSpeed, x => ((PlayerStateManager)manager).moveSpeed = x, 100f * Mathf.Abs(dot * 1.75f), 0.05f);
                 else if (dot > 0) DOTween.To(() => ((PlayerStateManager)manager).moveSpeed, x => ((PlayerStateManager)manager).moveSpeed = x, 15f, 0.05f);
-                else DOTween.To(() => ((PlayerStateManager)manager).moveSpeed, x => ((PlayerStateManager)manager).moveSpeed = x, 30f, 0.12f);
+                else DOTween.To(() => ((PlayerStateManager)manager).moveSpeed, x => ((PlayerStateManager)manager).moveSpeed = x, 30f, 0.05f);
             }
-            else ((PlayerStateManager)manager).moveSpeed = 30f;
+            
         } else ((PlayerStateManager)manager).moveSpeed = 0f;
     }
 

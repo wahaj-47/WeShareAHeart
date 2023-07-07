@@ -13,6 +13,8 @@ public class EnemyChargeState : EnemyBaseState
 
     public override void EnterState()
     {
+        base.EnterState();
+
         // Switch to running animation
         ((EnemyStateManager)manager).animator.SetFloat("Velocity", moveSpeed);   
     }

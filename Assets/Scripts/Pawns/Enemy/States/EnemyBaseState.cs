@@ -2,10 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBaseState : BaseState
+public class EnemyBaseState : BaseState, IInteractable
 {
 
-    public EnemyBaseState(EnemyStateManager manager) : base(manager) { }
+    public EnemyBaseState(EnemyStateManager manager) : base(manager) 
+    {
+        UI = ((EnemyStateManager)manager).UI;
+    }
+
+    public GameObject UI { get; set; }
+
+    public override void EnterState()
+    {
+        ((EnemyStateManager)manager).gameObject.layer = LayerMask.NameToLayer("Enemy");
+    }
 
     public override void OnCollisionEnter2D(Collision2D other) 
     {
@@ -39,4 +49,11 @@ public class EnemyBaseState : BaseState
         ((EnemyStateManager)manager).target = null;
         return false;
     }
+
+    public void Interact(PlayerStateManager interactor)
+    {
+        ((EnemyStateManager)manager).controller = interactor;
+        ((EnemyStateManager)manager).SwitchState(((EnemyStateManager)manager).EnemyPossessedState);
+    }
+
 }

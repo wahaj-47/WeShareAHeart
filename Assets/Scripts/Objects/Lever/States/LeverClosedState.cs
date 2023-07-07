@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class LeverClosedState : BaseState, IInteractable
 {
+    public GameObject UI { get; }
+
     public LeverClosedState(LeverStateManager manager) : base(manager) { }
 
     public override void EnterState()
     {
         ((LeverStateManager)manager).animator.SetBool("Open", false);
-        ((LeverStateManager)manager).target.SwitchState(((LeverStateManager)manager).target.TargetClosedState);
     }
 
     public void Interact(PlayerStateManager interactor)
