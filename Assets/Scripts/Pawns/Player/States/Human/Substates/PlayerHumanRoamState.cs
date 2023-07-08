@@ -12,16 +12,16 @@ public class PlayerHumanRoamState : PlayerHumanBaseState
 
         ((PlayerStateManager)manager).animator.SetBool("isMoving", base.movement.x != 0);
 
-        if (Input.GetButtonUp("Fire" + ((PlayerStateManager)manager).playerId))
+        if (((PlayerStateManager)manager).interactable != null)
         {
-            if (((PlayerStateManager)manager).interactable != null)
+            if(Input.GetButtonDown("Fire" + ((PlayerStateManager)manager).playerId))
             {
                 ((PlayerStateManager)manager).interactable.Interact((PlayerStateManager)manager);
             }
-            else
-            {
-                ((PlayerStateManager)manager).SwitchState(((PlayerStateManager)manager).HumanAimState);
-            }
+        }
+        else if (Input.GetButtonUp("Fire" + ((PlayerStateManager)manager).playerId))
+        {
+            ((PlayerStateManager)manager).SwitchState(((PlayerStateManager)manager).HumanAimState);
         }
 
         if (((PlayerStateManager)manager).utils.IsGrounded())

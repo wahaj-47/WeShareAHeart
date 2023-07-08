@@ -15,7 +15,6 @@ public class Boundaries : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-
         float objectWidth = spriteRenderer.bounds.size.x / 2;
         float objectHeight = spriteRenderer.bounds.size.y / 2;
 

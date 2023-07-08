@@ -15,7 +15,7 @@ public class LeverClosedState : BaseState, IInteractable
 
     public void Interact(PlayerStateManager interactor)
     {
-        if(((LeverStateManager)manager).elastic)
+        if (((LeverStateManager)manager).elastic)
             ((LeverStateManager)manager).SwitchState(((LeverStateManager)manager).LeverOpenHeldState);
         else
             ((LeverStateManager)manager).SwitchState(((LeverStateManager)manager).LeverOpenState);
