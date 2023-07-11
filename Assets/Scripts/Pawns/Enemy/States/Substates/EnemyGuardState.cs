@@ -30,7 +30,7 @@ public class EnemyGuardState : EnemyBaseState
 
     IEnumerator StartPatrol()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(Random.Range(2f, 5f));
         ((EnemyStateManager)manager).SwitchState(((EnemyStateManager)manager).EnemyPatrolState);
     }
 

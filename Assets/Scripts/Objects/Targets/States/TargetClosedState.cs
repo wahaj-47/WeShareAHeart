@@ -17,10 +17,12 @@ public class TargetClosedState : BaseState
         foreach (Collider2D collider in ((TargetStateManager)manager).blockingColliders)
         {
             collider.isTrigger = false;
+            collider.gameObject.layer = LayerMask.NameToLayer("Object");
         }
         foreach (Collider2D collider in ((TargetStateManager)manager).helpingColliders)
         {
             collider.isTrigger = true;
+            collider.gameObject.layer = LayerMask.NameToLayer("TriggerObject");
         }
     }
 }

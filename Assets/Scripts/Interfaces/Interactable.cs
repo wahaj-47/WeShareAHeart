@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public interface IInteractable
 {
@@ -22,5 +23,10 @@ public interface IInteractable
     {
         if (this.UI != null)
             this.UI.SetActive(false);
+    }
+
+    Image GetProgressBar()
+    {
+        return UI.transform.Find("Progress").GetComponent<Image>();
     }
 }

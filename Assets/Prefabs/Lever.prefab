@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8672372796998733837}
   - component: {fileID: 8039524389719560726}
   - component: {fileID: 8801977237190090203}
-  m_Layer: 6
+  m_Layer: 13
   m_Name: Lever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3372138789356259290, guid: 10adb2c4946f30a4a95505f90dd01d77, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 3712545920364703313, guid: 10adb2c4946f30a4a95505f90dd01d77, type: 3}
       propertyPath: m_Pivot.x
@@ -249,7 +249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6465299574759392494, guid: 10adb2c4946f30a4a95505f90dd01d77, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7623827468532627312, guid: 10adb2c4946f30a4a95505f90dd01d77, type: 3}
       propertyPath: m_Name
@@ -257,7 +257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7623827468532627312, guid: 10adb2c4946f30a4a95505f90dd01d77, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7623827468532627312, guid: 10adb2c4946f30a4a95505f90dd01d77, type: 3}
       propertyPath: m_IsActive
@@ -265,7 +265,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8632625262517891410, guid: 10adb2c4946f30a4a95505f90dd01d77, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10adb2c4946f30a4a95505f90dd01d77, type: 3}

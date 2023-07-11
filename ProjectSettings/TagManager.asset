@@ -22,9 +22,9 @@ TagManager:
   - Ghost
   - Human
   - Heart
-  - Ignore Player
+  - IgnorePlayer
   - Ground
-  - 
+  - TriggerObject
   - 
   - 
   - 

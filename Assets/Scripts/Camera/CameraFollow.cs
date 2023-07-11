@@ -36,7 +36,7 @@ public class CameraFollow : MonoBehaviour
     void Zoom()
     {
         float newZoom = Mathf.Lerp(maxZoom, minZoom, GetGreatestDistance() / zoomLimiter);
-        cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, newZoom, Time.deltaTime);
+        cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, newZoom, Time.deltaTime * 2);
     }
 
     void Move()
@@ -57,7 +57,7 @@ public class CameraFollow : MonoBehaviour
             bounds.Encapsulate(targets[i].position);
         }
 
-        return bounds.size.x;
+        return bounds.size.x > bounds.size.y ? bounds.size.x : bounds.size.y;
 
     }
 

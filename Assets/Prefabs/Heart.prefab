@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1360326409356944821}
   - component: {fileID: 1201576649645669133}
   - component: {fileID: 6051152715361969240}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: Heart
   m_TagString: Heart
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7857619439541869073}
   - component: {fileID: 9191406831596428104}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: Head
   m_TagString: Compound
   m_Icon: {fileID: 0}
@@ -294,6 +294,10 @@ PrefabInstance:
     - target: {fileID: 8564918244439432843, guid: 70627d15b9bace143b839dc2035a8f08, type: 3}
       propertyPath: m_Name
       value: Blood
+      objectReference: {fileID: 0}
+    - target: {fileID: 8564918244439432843, guid: 70627d15b9bace143b839dc2035a8f08, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8564918244439432843, guid: 70627d15b9bace143b839dc2035a8f08, type: 3}
       propertyPath: m_IsActive

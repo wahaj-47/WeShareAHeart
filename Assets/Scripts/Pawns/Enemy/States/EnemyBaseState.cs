@@ -19,7 +19,6 @@ public class EnemyBaseState : BaseState, IInteractable
 
     public override void OnCollisionEnter2D(Collision2D other) 
     {
-
         if (other.collider.tag == "Heart")
         {
             GameObject.Destroy(other.collider.gameObject);
@@ -35,7 +34,7 @@ public class EnemyBaseState : BaseState, IInteractable
 
     protected bool CanSee(string tag)
     {
-        RaycastHit2D hit = Physics2D.BoxCast(((EnemyStateManager)manager).transform.position, ((EnemyStateManager)manager).box.size, 0, ((EnemyStateManager)manager).transform.right, 5, ~LayerMask.GetMask("Ghost", "Enemy", "Ground"));
+        RaycastHit2D hit = Physics2D.BoxCast(((EnemyStateManager)manager).transform.position, ((EnemyStateManager)manager).box.size, 0, ((EnemyStateManager)manager).transform.right, 5, ~LayerMask.GetMask("Ghost", "Enemy", "Ground", "TriggerObject", "Compound", "IgnorePlayer"));
 
         if (hit.collider != null)
         {
@@ -52,6 +51,7 @@ public class EnemyBaseState : BaseState, IInteractable
 
     public void Interact(PlayerStateManager interactor)
     {
+        ((EnemyStateManager)manager).StopCoroutine("DoCoroutine");
         ((EnemyStateManager)manager).controller = interactor;
         ((EnemyStateManager)manager).SwitchState(((EnemyStateManager)manager).EnemyPossessedState);
     }

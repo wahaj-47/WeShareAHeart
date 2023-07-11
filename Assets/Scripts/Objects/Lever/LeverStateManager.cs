@@ -36,7 +36,7 @@ public class LeverStateManager : BaseStateManager, IInteractable
             target.FlipState();
         }
 
-        ((IInteractable)currentState).Interact(interactor);
+        ((IInteractable)currentState).Interact(this.interactor);
     }
 
     public override BaseState GetInitialState()
