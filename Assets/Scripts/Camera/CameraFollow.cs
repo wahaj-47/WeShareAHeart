@@ -12,7 +12,7 @@ public class CameraFollow : MonoBehaviour
 
     public Vector3 offset;
 
-    public float minZoom = 40f;
+    public float minZoom = 60f;
     public float maxZoom = 10f;
 
     public float zoomLimiter = 50f;
