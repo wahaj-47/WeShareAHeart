@@ -12,6 +12,8 @@ public class LevelLoader : MonoBehaviour
     {
         if (LevelLoader.instance == null) instance = this;
         else Destroy(gameObject);
+
+        Debug.Log(SceneManager.GetActiveScene().name);
     }
 
     public void LoadNextLevel(string transition = "Start")
@@ -22,6 +24,11 @@ public class LevelLoader : MonoBehaviour
     public void LoadLevelByIndex(int buildIndex, string transition = "Start")
     {
         StartCoroutine(LoadLevel(buildIndex, transition));
+    }
+
+    public void LoadLevelByName(string name, string transition = "Start")
+    {
+        StartCoroutine(LoadLevel(name, transition));
     }
 
     public void Reload(string transition = "Start")
@@ -43,5 +50,15 @@ public class LevelLoader : MonoBehaviour
 
         SceneManager.LoadScene(levelIndex);
     }
+
+    IEnumerator LoadLevel(string name, string transition)
+    {
+        animator.SetTrigger(transition);
+
+        yield return new WaitForSeconds(0.5f);
+
+        SceneManager.LoadScene(name);
+    }
+
 
 }

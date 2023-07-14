@@ -6,7 +6,7 @@ public class Hurt : MonoBehaviour
 {
     void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.collider.tag != "Compund")
+        if(other.collider.tag != "Compound")
         {
             if (other.collider.tag == "Human")
             {

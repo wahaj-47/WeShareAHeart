@@ -5,5 +5,5 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [HideInInspector]
-    public int playerId;   
+    public int playerId;
 }

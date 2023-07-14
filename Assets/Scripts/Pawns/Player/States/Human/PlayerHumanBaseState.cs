@@ -15,6 +15,7 @@ public class PlayerHumanBaseState : PlayerBaseState
         ((PlayerStateManager)manager).animator.SetBool("hasHeart", true);
         ((PlayerStateManager)manager).capsule.isTrigger = false;
         ((PlayerStateManager)manager).moveSpeed = 25f;
+        StateManager.instance.StopDeathTimer();
     }
 
     protected void Fire(Vector3 throwDirection)
@@ -39,6 +40,7 @@ public class PlayerHumanBaseState : PlayerBaseState
 
         ((PlayerStateManager)manager).animator.SetBool("turningHuman", false);
 
+        StateManager.instance.StartDeathTimer();
     }
 
     protected void HideTrajectory()

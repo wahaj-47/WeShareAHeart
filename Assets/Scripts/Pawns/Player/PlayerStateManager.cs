@@ -23,6 +23,7 @@ public class PlayerStateManager : BaseStateManager
     public int numberOfPoints = 10;
     public GameObject[] Points;
 
+    public BaseState PlayerPauseState;
     public BaseState HumanRoamState;
     public BaseState HumanAimState;
     public BaseState HumanAttackedState;
@@ -34,6 +35,7 @@ public class PlayerStateManager : BaseStateManager
 
     void Awake()
     {
+        PlayerPauseState = new PlayerPauseState(this);
         HumanRoamState = new PlayerHumanRoamState(this);
         HumanAimState = new PlayerHumanAimState(this);
         HumanAttackedState = new PlayerHumanAttackedState(this);
