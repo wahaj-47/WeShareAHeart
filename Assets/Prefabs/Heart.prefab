@@ -607,6 +607,7 @@ GameObject:
   - component: {fileID: 1360326409356944821}
   - component: {fileID: 1201576649645669133}
   - component: {fileID: 6051152715361969240}
+  - component: {fileID: 287829094151419202}
   m_Layer: 10
   m_Name: Heart
   m_TagString: Heart
@@ -768,6 +769,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blood: {fileID: 2959457008651832435}
+--- !u!114 &287829094151419202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551375177411589821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff16419baefe79840a8475f5a99d842b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Splat
+    clip: {fileID: 8300000, guid: 3e6fbdbda6b252848a1c1d11a52b2a3f, type: 3}
+    volume: 0.5
+    volumeVariance: 0.5
+    pitch: 1
+    pitchVariance: 0
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  mixerGroup: {fileID: 0}
 --- !u!1 &5220523215353176233
 GameObject:
   m_ObjectHideFlags: 0

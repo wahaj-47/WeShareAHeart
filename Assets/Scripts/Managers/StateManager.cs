@@ -23,6 +23,7 @@ public class StateManager : MonoBehaviour
 
     void Awake()
     {
+        Cursor.visible = false;
         if (instance != null)
         {
             Destroy(gameObject);
@@ -31,6 +32,11 @@ public class StateManager : MonoBehaviour
         {
             instance = this;
         }
+    }
+
+    void Start()
+    {
+        AudioManager.instance.Play("Ambience");
     }
 
     public void StartDeathTimer()
@@ -69,6 +75,7 @@ public class StateManager : MonoBehaviour
         Time.timeScale = 0.5f;
         Tween deathTween = DOTween.To(() => deathVolume.weight, x => deathVolume.weight = x, 1, 1f);
         yield return deathTween.WaitForCompletion();
+        Time.timeScale = 1f;
         LevelLoader.instance.LoadLevelByName("GameOver");
     }
 

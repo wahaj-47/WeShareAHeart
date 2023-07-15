@@ -44,41 +44,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 410a5e378a4a7ee49938e93fb544d04c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mixerGroup: {fileID: 0}
+  mixerGroup: {fileID: 24300002, guid: c1d419e75f7756e40a5579f52c4a585c, type: 2}
   sounds:
   - name: Theme
-    clip: {fileID: 8300000, guid: e7559951dad344fa7a0d9c553300bd7f, type: 3}
-    volume: 1
+    clip: {fileID: 8300000, guid: c824b0e8cb597794b961b7fc3641a27f, type: 3}
+    volume: 0.5
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
+    spatialBlend: 1
     loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
-  - name: Step
-    clip: {fileID: 8300000, guid: 34e44c745c759470fad28d3af20ba26a, type: 3}
-    volume: 1
+  - name: Start
+    clip: {fileID: 8300000, guid: 2a34b84e7cebb694c9ef018253c9662a, type: 3}
+    volume: 0.75
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
-    loop: 1
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: Woosh
-    clip: {fileID: 8300000, guid: a5e79280769854b93ae076b36fd1eee3, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
+    spatialBlend: 0.5
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
-  - name: Flame
-    clip: {fileID: 8300000, guid: 5e42a6c4ca77849a5b6970425510446a, type: 3}
-    volume: 1
+  - name: Ambience
+    clip: {fileID: 8300000, guid: 31e699007268f674e890a5c4c6a0d0c7, type: 3}
+    volume: 0.3
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
+    spatialBlend: 0.5
     loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}

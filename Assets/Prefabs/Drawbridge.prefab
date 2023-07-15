@@ -206,6 +206,7 @@ GameObject:
   - component: {fileID: 1390438233051276032}
   - component: {fileID: 1389193423837080804}
   - component: {fileID: 5413822756055515514}
+  - component: {fileID: 9223035034841539060}
   m_Layer: 6
   m_Name: Door
   m_TagString: Untagged
@@ -300,6 +301,40 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &9223035034841539060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5292635607701798023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50a7706e1be0a7e4ba46642b16e225ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Open
+    clip: {fileID: 8300000, guid: bc61adfd412173747949a0d8b9531afb, type: 3}
+    volume: 0.6
+    volumeVariance: 0.5
+    pitch: 0.6
+    pitchVariance: 0
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Close
+    clip: {fileID: 8300000, guid: 14448ce6c60e5c94ba51c82fa8060769, type: 3}
+    volume: 0.5
+    volumeVariance: 0.5
+    pitch: 0.6
+    pitchVariance: 0
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  mixerGroup: {fileID: 0}
 --- !u!1 &6648044919755980760
 GameObject:
   m_ObjectHideFlags: 0

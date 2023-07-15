@@ -15,6 +15,7 @@ public class PlayerHumanBaseState : PlayerBaseState
         ((PlayerStateManager)manager).animator.SetBool("hasHeart", true);
         ((PlayerStateManager)manager).capsule.isTrigger = false;
         ((PlayerStateManager)manager).moveSpeed = 25f;
+
         StateManager.instance.StopDeathTimer();
     }
 

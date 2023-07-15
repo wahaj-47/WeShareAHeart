@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8672372796998733837}
   - component: {fileID: 8039524389719560726}
   - component: {fileID: 8801977237190090203}
+  - component: {fileID: 9121455365574493929}
   m_Layer: 13
   m_Name: Lever
   m_TagString: Untagged
@@ -152,6 +153,40 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.453125, y: 0.578125}
   m_EdgeRadius: 0
+--- !u!114 &9121455365574493929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8672372796998733836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50a7706e1be0a7e4ba46642b16e225ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Open
+    clip: {fileID: 8300000, guid: 019baf1fc11082e4888551d1ac6fffda, type: 3}
+    volume: 0.5
+    volumeVariance: 0.5
+    pitch: 1
+    pitchVariance: 0
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Close
+    clip: {fileID: 8300000, guid: 62d6b896c08e3dd48bfe42b3bd40ebbf, type: 3}
+    volume: 0.5
+    volumeVariance: 0.5
+    pitch: 1
+    pitchVariance: 0
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  mixerGroup: {fileID: 0}
 --- !u!1001 &8217022145709375371
 PrefabInstance:
   m_ObjectHideFlags: 0

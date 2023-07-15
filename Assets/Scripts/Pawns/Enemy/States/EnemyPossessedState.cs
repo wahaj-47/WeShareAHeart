@@ -129,6 +129,7 @@ public class EnemyPossessedState : BaseState
         ((EnemyStateManager)manager).controller.SwitchState(((EnemyStateManager)manager).controller.GhostRoamState);
         ((EnemyStateManager)manager).SwitchState(((EnemyStateManager)manager).EnemyGuardState);
         ((EnemyStateManager)manager).progressBar.fillAmount = 0;
+        ((EnemyStateManager)manager).controller.gameObject.GetComponent<PlayerAudioManager>().Play("Unpossess");
 
         ((IInteractable)manager).HidePrompt();
     }

@@ -12,8 +12,6 @@ public class LevelLoader : MonoBehaviour
     {
         if (LevelLoader.instance == null) instance = this;
         else Destroy(gameObject);
-
-        Debug.Log(SceneManager.GetActiveScene().name);
     }
 
     public void LoadNextLevel(string transition = "Start")
@@ -46,7 +44,7 @@ public class LevelLoader : MonoBehaviour
     {
         animator.SetTrigger(transition);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2f);
 
         SceneManager.LoadScene(levelIndex);
     }
@@ -55,7 +53,7 @@ public class LevelLoader : MonoBehaviour
     {
         animator.SetTrigger(transition);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2f);
 
         SceneManager.LoadScene(name);
     }

@@ -1,6 +1,8 @@
 using UnityEngine.Audio;
+using System.Collections;
 using System;
 using UnityEngine;
+using DG.Tweening;
 
 public class AudioManager : MonoBehaviour
 {
@@ -28,6 +30,7 @@ public class AudioManager : MonoBehaviour
 			s.source = gameObject.AddComponent<AudioSource>();
 			s.source.clip = s.clip;
 			s.source.loop = s.loop;
+			s.source.spatialBlend = s.spatialBlend;
 
 			s.source.outputAudioMixerGroup = mixerGroup;
 		}
@@ -35,10 +38,10 @@ public class AudioManager : MonoBehaviour
 
 	private void Start()
 	{
-		instance.Play("Theme");
+		instance.Play("Theme", 1f);
 	}
 
-	public void Play(string sound)
+	public void Play(string sound, float delay = 0f)
 	{
 		Sound s = Array.Find(sounds, item => item.name == sound);
 		if (s == null)
@@ -56,7 +59,7 @@ public class AudioManager : MonoBehaviour
 		s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
 		s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
 
-		s.source.Play();
+		s.source.PlayDelayed(delay);
 	}
 
 	public void PlayOnce(string sound)
@@ -68,19 +71,13 @@ public class AudioManager : MonoBehaviour
 			return;
 		}
 
-		if (s.source.isPlaying)
-		{
-			Debug.LogWarning("Sound: " + sound + " already playing!");
-			return;
-		}
-
 		s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
 		s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
 
 		s.source.PlayOneShot(s.clip, s.volume);
 	}
 
-	public void StopPlaying(string sound)
+	public void StopPlaying(string sound, bool fade = true)
 	{
 		Sound s = Array.Find(sounds, item => item.name == sound);
 		if (s == null)
@@ -89,9 +86,16 @@ public class AudioManager : MonoBehaviour
 			return;
 		}
 
-		s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
-		s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
+		if(fade)
+			StartCoroutine(Fade(s));
+		else
+			s.source.Stop();
+	}
 
+	private IEnumerator Fade(Sound s)
+    {
+		Tween soundTween = DOTween.To(() => s.source.volume, x => s.source.volume = x, 0, 1f);
+		yield return soundTween.WaitForCompletion();
 		s.source.Stop();
 	}
 

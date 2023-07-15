@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 5282695990395988389}
   - component: {fileID: -8385751418628480912}
   - component: {fileID: 4370006226376578736}
+  - component: {fileID: -6480061287971738836}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -235,6 +236,116 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.26, y: 0.7}
   m_Direction: 0
+--- !u!114 &-6480061287971738836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6648930984035363047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27737ed47cd3d6f4e8b3a92a7001550e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Footstep-A
+    clip: {fileID: 8300000, guid: b2eab14f11db61a49b87dfc101ae753e, type: 3}
+    volume: 0.4
+    volumeVariance: 0.5
+    pitch: 1
+    pitchVariance: 0
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Footstep-B
+    clip: {fileID: 8300000, guid: e671d6284b5fe2243b25bcc2878d9d21, type: 3}
+    volume: 0.4
+    volumeVariance: 0.5
+    pitch: 1
+    pitchVariance: 0
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Footstep-C
+    clip: {fileID: 8300000, guid: 0b3cd3f2c8e27fd4e8a8a295e51e4fd5, type: 3}
+    volume: 0.4
+    volumeVariance: 0.5
+    pitch: 1
+    pitchVariance: 0
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Footstep-D
+    clip: {fileID: 8300000, guid: 1fe09b34f162d17409ffaca5ddfc9b6c, type: 3}
+    volume: 0.4
+    volumeVariance: 0.5
+    pitch: 1
+    pitchVariance: 0
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Footstep-E
+    clip: {fileID: 8300000, guid: cf0491b713d98814782ca1434f8e3f0b, type: 3}
+    volume: 0.4
+    volumeVariance: 0.5
+    pitch: 1
+    pitchVariance: 0
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Fire
+    clip: {fileID: 8300000, guid: ce8ee8ae03445b7409c90f8b07354da9, type: 3}
+    volume: 0.3
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Catch
+    clip: {fileID: 8300000, guid: 87548659d8a33364e9fa6a12377fd1bc, type: 3}
+    volume: 0.3
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Possess
+    clip: {fileID: 8300000, guid: 7b9d10c20054e87418d5c733c0c876f5, type: 3}
+    volume: 0.3
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Unpossess
+    clip: {fileID: 8300000, guid: 77ed10d0ca17bda459e73723198a60aa, type: 3}
+    volume: 0.3
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    spatialBlend: 1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  mixerGroup: {fileID: 0}
+  footstepSounds:
+  - Footstep-A
+  - Footstep-B
+  - Footstep-C
+  - Footstep-D
+  - Footstep-E
 --- !u!1 &8360100137364600030
 GameObject:
   m_ObjectHideFlags: 0
