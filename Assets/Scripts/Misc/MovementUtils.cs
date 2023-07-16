@@ -22,6 +22,7 @@ public class MovementUtils : MonoBehaviour
 
     public bool IsGrounded()
     {
+
         RaycastHit2D hit = Physics2D.CircleCast(GroundCheck.transform.position, 0.5f, -GroundCheck.transform.up, 0.5f, LayerMask.GetMask("Ground"));
 
         if (hit.collider != null)

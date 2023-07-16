@@ -90,6 +90,10 @@ MonoBehaviour:
   helpingColliders:
   - {fileID: 9110435989245773438}
   InitialState: 1
+  closedBlockingLayer: Object
+  closedHelpingLayer: TriggerObject
+  openedBlockingLayer: TriggerObject
+  openedHelpingLayer: Ground
 --- !u!1 &3092706612693456448
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,7 +349,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3459444376691299256}
   - component: {fileID: 9110435989245773438}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Platform
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -380,7 +384,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.69597125, y: -0.80723435}
+  m_Offset: {x: -0.69597125, y: -0.827994}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -391,7 +395,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.737782, y: 0.1510545}
+  m_Size: {x: 1.737782, y: 0.19257379}
   m_EdgeRadius: 0
 --- !u!1 &7809340113566788288
 GameObject:

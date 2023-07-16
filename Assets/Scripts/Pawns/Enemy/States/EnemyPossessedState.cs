@@ -92,7 +92,10 @@ public class EnemyPossessedState : BaseState
             }
             else moveSpeed = 30f;
         }
-        else moveSpeed = 0f;
+        else {
+            moveSpeed = 0f;
+            Switch();
+        }
 
         Vector3 targetVelocity = movement * moveSpeed * Time.fixedDeltaTime * 10f;
         ((EnemyStateManager)manager).rb.velocity = Vector3.SmoothDamp(((EnemyStateManager)manager).rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
@@ -124,7 +127,11 @@ public class EnemyPossessedState : BaseState
     private IEnumerator Depossess()
     {
         yield return new WaitForSeconds(time);
+        Switch();
+    }
 
+    private void Switch()
+    {
         DOTween.To(() => ((EnemyStateManager)manager).sprite.color, x => ((EnemyStateManager)manager).sprite.color = x, new Color(255, 255, 255, 1), 0.5f);
         ((EnemyStateManager)manager).controller.SwitchState(((EnemyStateManager)manager).controller.GhostRoamState);
         ((EnemyStateManager)manager).SwitchState(((EnemyStateManager)manager).EnemyGuardState);

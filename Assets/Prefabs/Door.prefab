@@ -80,6 +80,10 @@ MonoBehaviour:
   - {fileID: 3340638356517716984}
   helpingColliders: []
   InitialState: 1
+  closedBlockingLayer: Object
+  closedHelpingLayer: TriggerObject
+  openedBlockingLayer: TriggerObject
+  openedHelpingLayer: Ground
 --- !u!1 &568660716302909006
 GameObject:
   m_ObjectHideFlags: 0

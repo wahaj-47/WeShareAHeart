@@ -32,6 +32,7 @@ namespace DialogueSystem
             yield return new WaitUntil(() => Input.GetButtonDown("Jump"));
             finished = true;
         }
+
     }
 }
 

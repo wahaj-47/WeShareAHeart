@@ -71,13 +71,15 @@ public class StateManager : MonoBehaviour
 
     private IEnumerator Countdown()
     {
-        yield return new WaitForSeconds(deathTimerDuration);
+        yield return new WaitForSeconds(deathTimerDuration / 2);
+        AudioManager.instance.Play("Beat");
+        yield return new WaitForSeconds(deathTimerDuration / 2);
+        AudioManager.instance.StopPlaying("Beat");
         Time.timeScale = 0.5f;
         Tween deathTween = DOTween.To(() => deathVolume.weight, x => deathVolume.weight = x, 1, 1f);
         yield return deathTween.WaitForCompletion();
         Time.timeScale = 1f;
         LevelLoader.instance.LoadLevelByName("GameOver");
     }
-
     
 }

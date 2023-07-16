@@ -55,6 +55,7 @@ public class PlayerStateManager : BaseStateManager
         for(int i=0; i<numberOfPoints; i++)
         {
             Points[i] = Instantiate(PointPrefab, transform.position, Quaternion.identity);
+            Points[i].transform.localScale = Points[i].transform.localScale * (1 - (i / 10));
             Points[i].SetActive(false);
         }
     }

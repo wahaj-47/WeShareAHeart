@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace DialogueSystem
 {
@@ -8,6 +9,14 @@ namespace DialogueSystem
     {
         [Header("Delay")]
         [SerializeField] private float startDelay = 0;
+
+        public UnityEvent onSequenceComplete;
+
+        private void Start()
+        {
+            if (GameStateManager.instance.tutorialCompleted)
+                gameObject.SetActive(false);
+        }
 
         private void OnTriggerEnter2D()
         {
@@ -26,7 +35,10 @@ namespace DialogueSystem
                 yield return new WaitUntil(() => transform.GetChild(i).GetComponent<Dialogue>().finished);
                 transform.GetChild(i).gameObject.SetActive(false);
             }
+            if(onSequenceComplete != null)
+                onSequenceComplete.Invoke();
             gameObject.SetActive(false);
+
             StateManager.instance.EnablePlayers();
         }
     }

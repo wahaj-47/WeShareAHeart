@@ -11,6 +11,7 @@ public class GameOver : MonoBehaviour
 
     void Awake()
     {
+        Cursor.visible = true;
         heart.GetComponent<Animator>().SetBool("Slow", true);
     }
 
@@ -36,6 +37,7 @@ public class GameOver : MonoBehaviour
     public void Retry()
     {
         AudioManager.instance.PlayOnce("Start");
+        AudioManager.instance.StopPlaying("Theme");
         LevelLoader.instance.LoadLevelByName("LevelOne");
     }
 }

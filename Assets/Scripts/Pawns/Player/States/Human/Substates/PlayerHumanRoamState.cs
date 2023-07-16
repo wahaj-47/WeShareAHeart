@@ -30,7 +30,7 @@ public class PlayerHumanRoamState : PlayerHumanBaseState
             {
                 float dot = ((PlayerStateManager)manager).utils.CheckSlope();
 
-                if (dot < 0) DOTween.To(() => ((PlayerStateManager)manager).moveSpeed, x => ((PlayerStateManager)manager).moveSpeed = x, 100f * Mathf.Abs(dot * 1.75f), 0.05f);
+                if (dot < 0) DOTween.To(() => ((PlayerStateManager)manager).moveSpeed, x => ((PlayerStateManager)manager).moveSpeed = x, 100f * Mathf.Abs(dot * 1.6f), 0.05f);
                 else if (dot > 0) DOTween.To(() => ((PlayerStateManager)manager).moveSpeed, x => ((PlayerStateManager)manager).moveSpeed = x, 15f, 0.05f);
                 else DOTween.To(() => ((PlayerStateManager)manager).moveSpeed, x => ((PlayerStateManager)manager).moveSpeed = x, 30f, 0.05f);
             }

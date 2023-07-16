@@ -13,6 +13,13 @@ public class TargetStateManager : BaseStateManager
 
     public State InitialState;
 
+    public string closedBlockingLayer;
+    public string closedHelpingLayer;
+
+    public string openedBlockingLayer;
+    public string openedHelpingLayer;
+
+
     void Awake()
     {
         TargetOpenState = new TargetOpenState(this);
