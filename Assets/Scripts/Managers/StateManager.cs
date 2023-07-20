@@ -52,6 +52,7 @@ public class StateManager : MonoBehaviour
 
         coroutine = null;
         heartInScene = false;
+        AudioManager.instance.StopPlaying("Beat");
     }
 
     public void DisablePlayers()

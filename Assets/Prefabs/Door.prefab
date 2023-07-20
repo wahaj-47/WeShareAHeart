@@ -224,6 +224,8 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   mixerGroup: {fileID: 0}
+  minDistance: 6
+  maxDistance: 12
 --- !u!1 &4310234328908582236
 GameObject:
   m_ObjectHideFlags: 0

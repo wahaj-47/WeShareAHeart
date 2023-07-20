@@ -20,6 +20,11 @@ namespace DialogueSystem
 
         private void OnTriggerEnter2D()
         {
+            if (GameStateManager.instance.tutorialCompleted)
+            {
+                gameObject.SetActive(false);
+                return;
+            }
             GetComponent<Collider2D>().enabled = false;
             StateManager.instance.DisablePlayers();
             StartCoroutine(StartSequence());

@@ -41,7 +41,7 @@ public class LevelComplete : MonoBehaviour
     {
         if(human && ghost)
         {
-            LevelLoader.instance.LoadLevelByName("MainMenu");
+            LevelLoader.instance.LoadLevelByName("ToBeContinued");
         }
     }
 }

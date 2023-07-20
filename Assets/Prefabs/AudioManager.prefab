@@ -68,7 +68,17 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Ambience
     clip: {fileID: 8300000, guid: 31e699007268f674e890a5c4c6a0d0c7, type: 3}
-    volume: 0.3
+    volume: 0.5
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    spatialBlend: 0.5
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Beat
+    clip: {fileID: 8300000, guid: fc815a4c693b8114c9fd0090f4c72187, type: 3}
+    volume: 0.5
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
