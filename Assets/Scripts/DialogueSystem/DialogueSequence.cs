@@ -14,17 +14,13 @@ namespace DialogueSystem
 
         private void Start()
         {
+            Debug.Log(GameStateManager.instance.tutorialCompleted);
             if (GameStateManager.instance.tutorialCompleted)
                 gameObject.SetActive(false);
         }
 
         private void OnTriggerEnter2D()
         {
-            if (GameStateManager.instance.tutorialCompleted)
-            {
-                gameObject.SetActive(false);
-                return;
-            }
             GetComponent<Collider2D>().enabled = false;
             StateManager.instance.DisablePlayers();
             StartCoroutine(StartSequence());

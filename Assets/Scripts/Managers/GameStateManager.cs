@@ -24,6 +24,6 @@ public class GameStateManager : MonoBehaviour
 
     public void CompleteTutorial()
     {
-        tutorialCompleted = true;
+        instance.tutorialCompleted = true;
     }
 }
