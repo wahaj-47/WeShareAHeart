@@ -93,6 +93,7 @@ public class EnemyPossessedState : BaseState
             else moveSpeed = 30f;
         }
         else {
+            Debug.Log(((EnemyStateManager)manager).utils.IsGrounded());
             moveSpeed = 0f;
             Switch();
         }
